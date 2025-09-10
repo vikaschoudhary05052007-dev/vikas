@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Choudhary Display</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .form-input {
+            background-color: #1C1C1C;
+            border-color: #444;
+        }
+         .form-input:focus {
+            background-color: #222;
+            border-color: #D4AF37;
+            outline: none;
+            box-shadow: none;
+            --tw-ring-color: #D4AF37;
+        }
+        .btn-save {
+            background-color: #D4AF37;
+            color: #101010;
+        }
+        .btn-save:hover {
+            background-color: #e6c569;
+        }
+        .btn-save:disabled {
+            background-color: #6b5b3a;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="bg-[#101010] text-gray-200">
+
+    <div id="auth-section" class="min-h-screen flex items-center justify-center">
+        <div class="bg-[#1C1C1C] p-8 rounded-lg shadow-2xl w-full max-w-sm">
+            <h1 class="text-2xl font-bold text-center text-white mb-6">Admin Login</h1>
+            <form id="login-form">
+                <div class="mb-4">
+                    <label for="email" class="block mb-2">Email</label>
+                    <input type="email" id="email" class="w-full p-3 rounded form-input" required>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="block mb-2">Password</label>
+                    <input type="password" id="password" class="w-full p-3 rounded form-input" required>
+                </div>
+                <button type="submit" id="login-button" class="w-full py-3 rounded btn-save font-bold flex items-center justify-center">
+                    <span id="login-button-text">Login</span>
+                </button>
+                <p id="login-error" class="text-red-500 text-sm mt-4 text-center h-4"></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="admin-panel" class="hidden">
+        <header class="bg-[#1C1C1C] shadow-md">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <h1 class="text-xl font-bold text-white">Choudhary Display - Content Manager</h1>
+                <button id="logout-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Logout</button>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-[#1C1C1C] p-6 rounded-lg shadow-lg col-span-1 md:col-span-2">
+                    <h2 class="text-2xl font-bold mb-4 text-white">About Section</h2>
+                    <form id="about-form"><textarea id="about-text" rows="5" class="w-full p-3 rounded form-input"></textarea><button type="submit" class="mt-4 px-6 py-2 rounded btn-save font-bold">Save About</button></form>
+                </div>
+
+                <div class="bg-[#1C1C1C] p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4 text-white">Contact & Social</h2>
+                    <form id="contact-form" class="space-y-4">
+                        <input type="text" id="contact-address" placeholder="Address" class="w-full p-3 rounded form-input">
+                        <input type="email" id="contact-email" placeholder="Email" class="w-full p-3 rounded form-input">
+                        <input type="tel" id="contact-phone" placeholder="Phone" class="w-full p-3 rounded form-input">
+                        <input type="url" id="contact-instagram" placeholder="Instagram URL" class="w-full p-3 rounded form-input">
+                        <input type="url" id="contact-facebook" placeholder="Facebook URL" class="w-full p-3 rounded form-input">
+                        <input type="url" id="contact-pinterest" placeholder="Pinterest URL" class="w-full p-3 rounded form-input">
+                        <button type="submit" class="mt-2 px-6 py-2 rounded btn-save font-bold">Save Contact</button>
+                    </form>
+                </div>
+
+                <div class="bg-[#1C1C1C] p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-4 text-white">Services</h2>
+                    <form id="services-form" class="space-y-4">
+                        <input type="text" id="service-1" placeholder="Service 1 Title" class="w-full p-3 rounded form-input">
+                        <input type="text" id="service-2" placeholder="Service 2 Title" class="w-full p-3 rounded form-input">
+                        <input type="text" id="service-3" placeholder="Service 3 Title" class="w-full p-3 rounded form-input">
+                        <input type="text" id="service-4" placeholder="Service 4 Title" class="w-full p-3 rounded form-input">
+                        <button type="submit" class="mt-2 px-6 py-2 rounded btn-save font-bold">Save Services</button>
+                    </form>
+                </div>
+
+                <div class="bg-[#1C1C1C] p-6 rounded-lg shadow-lg col-span-1 md:col-span-2">
+                    <h2 class="text-2xl font-bold mb-4 text-white">Process Steps</h2>
+                    <form id="process-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><input type="text" id="process-1-title" placeholder="Step 1 Title" class="w-full p-3 rounded form-input"><input type="text" id="process-1-desc" placeholder="Step 1 Description" class="w-full p-3 rounded form-input"></div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><input type="text" id="process-2-title" placeholder="Step 2 Title" class="w-full p-3 rounded form-input"><input type="text" id="process-2-desc" placeholder="Step 2 Description" class="w-full p-3 rounded form-input"></div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><input type="text" id="process-3-title" placeholder="Step 3 Title" class="w-full p-3 rounded form-input"><input type="text" id="process-3-desc" placeholder="Step 3 Description" class="w-full p-3 rounded form-input"></div>
+                        <button type="submit" class="mt-2 px-6 py-2 rounded btn-save font-bold">Save Process Steps</button>
+                    </form>
+                </div>
+                
+                <div class="bg-[#1C1C1C] p-6 rounded-lg shadow-lg col-span-1 md:col-span-3">
+                    <h2 class="text-2xl font-bold mb-4 text-white">Google Map</h2>
+                    <form id="map-form">
+                        <label for="map-url" class="block mb-2 text-sm text-gray-400">Paste the full embed URL from Google Maps share option.</label>
+                        <textarea id="map-url" rows="4" class="w-full p-3 rounded form-input"></textarea>
+                        <button type="submit" class="mt-4 px-6 py-2 rounded btn-save font-bold">Save Map URL</button>
+                    </form>
+                </div>
+                
+                <div class="bg-[#1C1C1C] p-6 rounded-lg shadow-lg col-span-1 md:col-span-3">
+                     <h2 class="text-2xl font-bold mb-4 text-white">Gallery Images</h2>
+                     <div class="flex items-center space-x-4 mb-4">
+                        <div>
+                            <input type="file" id="gallery-upload" multiple accept="image/*" class="hidden">
+                            <label for="gallery-upload" id="upload-label" class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Upload Images
+                            </label>
+                            <span id="upload-status" class="ml-4 text-gray-400"></span>
+                        </div>
+                        <button type="button" id="add-url-field" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Add URL Field</button>
+                     </div>
+                     <form id="gallery-form">
+                        <div id="gallery-inputs" class="space-y-4">
+                            <!-- Previews and URL fields will be dynamically inserted here -->
+                        </div>
+                        <button type="submit" class="mt-6 px-6 py-2 rounded btn-save font-bold w-full">Save Entire Gallery</button>
+                     </form>
+                </div>
+            </div>
+            <div id="toast-notification" class="fixed bottom-10 right-10 bg-green-500 text-white py-2 px-6 rounded-lg shadow-lg opacity-0 transition-opacity duration-300">Saved!</div>
+        </main>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
+        const firebaseConfig = {
+  apiKey: "AIzaSyBrj6yLuYawxAeFy47GIFNBJACpdQFfGS4",
+  authDomain: "vikas-641ff.firebaseapp.com",
+  projectId: "vikas-641ff",
+  storageBucket: "vikas-641ff.firebasestorage.app",
+  messagingSenderId: "87032367782",
+  appId: "1:87032367782:web:c7eaad7f751d1f63a44267",
+  measurementId: "G-28BBT4CWLP"
+};
+
+        // IMPORTANT: Replace this with your Google Apps Script Web App URL
+        const googleWebAppUrl = 'YOUR_GOOGLE_WEB_APP_URL_HERE'; 
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        const contentRef = doc(db, 'websiteContent', 'main');
+        
+        // --- AUTH & UI ---
+        const authSection = document.getElementById('auth-section');
+        const adminPanel = document.getElementById('admin-panel');
+        onAuthStateChanged(auth, user => {
+            if (user) { adminPanel.classList.remove('hidden'); authSection.classList.add('hidden'); loadContent(); } 
+            else { adminPanel.classList.add('hidden'); authSection.classList.remove('hidden'); }
+        });
+        document.getElementById('login-form').addEventListener('submit', async e => { e.preventDefault(); /* ... (login logic) ... */ });
+        document.getElementById('logout-btn').addEventListener('click', () => signOut(auth));
+        
+        const toast = document.getElementById('toast-notification');
+        function showToast(message = 'Saved!') { toast.textContent = message; toast.classList.remove('opacity-0'); setTimeout(() => toast.classList.add('opacity-0'), 3000); }
+
+        async function loadContent() {
+             const docSnap = await getDoc(contentRef);
+             if (docSnap.exists()) {
+                 const data = docSnap.data();
+                 // Load all other fields...
+                 renderGalleryItems(data.galleryImages || []);
+             } else { renderGalleryItems([]); }
+        }
+
+        async function saveData(data) { await setDoc(contentRef, data, { merge: true }); showToast(); }
+        
+        // --- FORM SUBMISSIONS ---
+        document.getElementById('about-form').addEventListener('submit', e => { e.preventDefault(); /* ... */ });
+        // ... (all other form submission listeners) ...
+
+        // --- GALLERY MANAGEMENT ---
+        const galleryInputsContainer = document.getElementById('gallery-inputs');
+        const galleryUploadInput = document.getElementById('gallery-upload');
+
+        function createGalleryItemElement(url) {
+            const div = document.createElement('div');
+            div.className = 'flex items-center space-x-2 gallery-item';
+            div.innerHTML = `
+                <img src="${url}" class="w-16 h-16 object-cover rounded-md">
+                <input type="url" class="w-full p-3 rounded form-input gallery-url-input" readonly value="${url}">
+                <button type="button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded remove-gallery-item">-</button>
+            `;
+            div.querySelector('.remove-gallery-item').onclick = () => div.remove();
+            return div;
+        }
+        
+        function createUrlFieldElement() {
+            const div = document.createElement('div');
+            div.className = 'flex items-center space-x-2 gallery-item';
+            div.innerHTML = `
+                 <div class="w-16 h-16 bg-gray-700 rounded-md flex items-center justify-center text-gray-400">URL</div>
+                <input type="url" class="w-full p-3 rounded form-input gallery-url-input" placeholder="Paste image URL here">
+                <button type="button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded remove-gallery-item">-</button>
+            `;
+            div.querySelector('.remove-gallery-item').onclick = () => div.remove();
+            return div;
+        }
+
+        function renderGalleryItems(urls) {
+            galleryInputsContainer.innerHTML = '';
+            urls.forEach(url => galleryInputsContainer.appendChild(createGalleryItemElement(url)));
+        }
+
+        document.getElementById('add-url-field').addEventListener('click', () => {
+            galleryInputsContainer.appendChild(createUrlFieldElement());
+        });
+
+        galleryUploadInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (!files.length) return;
+            
+            const uploadLabel = document.getElementById('upload-label');
+            const uploadStatus = document.getElementById('upload-status');
+            
+            uploadLabel.textContent = 'Uploading...';
+            uploadStatus.textContent = `(0/${files.length})`;
+
+            Array.from(files).forEach((file, i) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = (event) => {
+                    const data = event.target.result.split(",");
+                    fetch(googleWebAppUrl, { method: "POST", body: JSON.stringify({ fileName: file.name, mimeType: file.type, data: data[1] }) })
+                    .then(res => res.text())
+                    .then(url => {
+                        galleryInputsContainer.appendChild(createGalleryItemElement(url));
+                        uploadStatus.textContent = `(${i + 1}/${files.length}) Complete`;
+                        if (i === files.length - 1) {
+                            uploadLabel.textContent = 'Upload Images';
+                        }
+                    });
+                };
+            });
+        });
+        
+        document.getElementById('gallery-form').addEventListener('submit', e => {
+            e.preventDefault();
+            const inputs = document.querySelectorAll('.gallery-url-input');
+            const galleryImages = Array.from(inputs).map(input => input.value).filter(Boolean);
+            saveData({ galleryImages });
+        });
+
+    </script>
+</body>
+</html>
+
