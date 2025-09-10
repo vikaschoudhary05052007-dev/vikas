@@ -39,7 +39,10 @@
     <header class="sticky top-0 z-50 bg-brand-bg/70 backdrop-blur-lg border-b border-white/10">
         <div class="container mx-auto px-6">
             <nav class="flex justify-between items-center py-4">
-                <a href="#" class="font-heading text-2xl font-bold text-brand-primary">Choudhary Display</a>
+                <a href="#" class="flex items-center space-x-3">
+                    <img id="header-logo" src="" alt="Business Logo" class="h-10 w-10 rounded-full hidden object-cover">
+                    <span class="font-heading text-2xl font-bold text-brand-primary">Choudhary Display</span>
+                </a>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#about" class="font-medium text-gray-300 hover:text-white transition-colors">About</a>
                     <a href="#services" class="font-medium text-gray-300 hover:text-white transition-colors">Services</a>
@@ -80,7 +83,7 @@
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-2 gap-16 items-center">
                     <div data-aos="fade-right">
-                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2070&auto=format&fit=crop" alt="Elegant wedding table setting" class="rounded-lg shadow-2xl w-full h-auto">
+                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2070&auto-format&fit=crop" alt="Elegant wedding table setting" class="rounded-lg shadow-2xl w-full h-auto">
                     </div>
                     <div data-aos="fade-left" data-aos-delay="200">
                         <h2 class="font-heading text-4xl md:text-5xl font-bold text-brand-primary mb-6">A Legacy of Celebration</h2>
@@ -95,7 +98,8 @@
                 <h2 class="font-heading text-4xl md:text-5xl font-bold text-brand-primary text-center mb-4">What We Offer</h2>
                 <p class="text-center max-w-2xl mx-auto mb-16 text-gray-300">A full suite of decoration services to bring your event to life.</p>
                 <div id="services-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    </div>
+                    <!-- Services will be loaded here dynamically -->
+                </div>
             </div>
         </section>
 
@@ -105,10 +109,11 @@
                     <div data-aos="fade-right">
                          <h2 class="font-heading text-4xl md:text-5xl font-bold text-brand-primary mb-8">Our Seamless Process</h2>
                         <div id="process-steps" class="border-l-2 border-white/20 pl-8 space-y-8">
-                           </div>
+                           <!-- Process steps will be loaded here dynamically -->
+                        </div>
                     </div>
                     <div data-aos="zoom-in-up" data-aos-delay="200">
-                        <img src="https://images.unsplash.com/photo-1587825140708-df876a5b974b?q=80&w=2070&auto=format&fit=crop" alt="Team discussing wedding plans" class="rounded-lg shadow-2xl w-full h-auto">
+                        <img src="https://images.unsplash.com/photo-1587825140708-df876a5b974b?q=80&w=2070&auto-format&fit=crop" alt="Team discussing wedding plans" class="rounded-lg shadow-2xl w-full h-auto">
                     </div>
                 </div>
             </div>
@@ -118,7 +123,8 @@
             <div class="container mx-auto px-6">
                 <h2 class="font-heading text-4xl md:text-5xl font-bold text-brand-primary text-center mb-16">Our Beautiful Creations</h2>
                 <div id="gallery-grid" class="columns-2 md:columns-3 gap-4" data-aos="fade-up">
-                    </div>
+                    <!-- Gallery images will be loaded here dynamically -->
+                </div>
             </div>
         </section>
         
@@ -126,7 +132,8 @@
             <div class="container mx-auto px-6">
                 <h2 class="font-heading text-4xl md:text-5xl font-bold text-brand-primary text-center mb-16" data-aos="fade-up">What Our Clients Say</h2>
                 <div id="testimonials-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    </div>
+                    <!-- Testimonials will be loaded here dynamically -->
+                </div>
             </div>
         </section>
 
@@ -146,26 +153,29 @@
             <div class="container mx-auto px-6">
                 <h2 class="font-heading text-4xl md:text-5xl font-bold text-brand-primary text-center mb-4">Let's Plan Your Dream Day</h2>
                 <p class="text-center max-w-2xl mx-auto mb-12 text-gray-300">Fill out the form for a free consultation. We'd love to hear about your vision.</p>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-brand-bg p-8 md:p-12 rounded-lg shadow-2xl" data-aos="fade-up">
+                <div class="grid md:grid-cols-2 gap-12 bg-brand-bg p-8 md:p-12 rounded-lg shadow-2xl" data-aos="fade-up">
                     <form>
                         <div class="mb-5"><label for="name" class="block mb-2 font-medium">Full Name</label><input type="text" id="name" class="w-full p-3 bg-brand-card border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-brand-accent focus:outline-none" required></div>
                         <div class="mb-5"><label for="email" class="block mb-2 font-medium">Email Address</label><input type="email" id="email" class="w-full p-3 bg-brand-card border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-brand-accent focus:outline-none" required></div>
                         <div class="mb-5"><label for="date" class="block mb-2 font-medium">Event Date</label><input type="date" id="date" class="w-full p-3 bg-brand-card border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-brand-accent focus:outline-none"></div>
-                        <div class="mb-5"><label for="message" class="block mb-2 font-medium">Your Vision</label><textarea id="message" rows="4" class="w-full p-3 bg-brand-card border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-brand-accent focus:outline-none" required></textarea></div>
-                        <button type="submit" class="bg-brand-accent text-black font-bold px-8 py-3 rounded-full shadow-lg shadow-brand-accent/20 hover:shadow-xl hover:shadow-brand-accent/30 hover:-translate-y-0.5 transition-all w-full">Send Message</button>
+                        <div class="relative">
+                             <label for="message" class="block mb-2 font-medium">Your Vision</label>
+                             <textarea id="message" rows="4" class="w-full p-3 bg-brand-card border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-brand-accent focus:outline-none" placeholder="e.g., a royal theme with gold and red" required></textarea>
+                             <button type="button" id="vision-helper-btn" class="absolute bottom-3 right-3 bg-brand-accent/20 text-brand-accent text-xs font-bold px-2 py-1 rounded hover:bg-brand-accent/40 transition-colors">
+                                 <span id="vision-helper-text">✨ Vision Helper</span>
+                                 <span id="vision-helper-spinner" class="hidden animate-spin rounded-full h-4 w-4 border-b-2 border-brand-accent"></span>
+                             </button>
+                        </div>
+                        <button type="submit" class="bg-brand-accent text-black font-bold px-8 py-3 rounded-full shadow-lg shadow-brand-accent/20 hover:shadow-xl hover:shadow-brand-accent/30 hover:-translate-y-0.5 transition-all w-full mt-5">Send Message</button>
                     </form>
-                    
-                    <div class="flex flex-col gap-8">
-                        <div id="map-container" class="w-full h-80 md:h-full rounded-lg overflow-hidden" data-aos="fade-left" data-aos-delay="200">
-                           <p class="text-gray-400 p-4">Loading map...</p>
-                        </div>
-                        <div class="space-y-6 flex flex-col justify-center">
-                            <p id="contact-address" class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-4 text-brand-accent flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Loading...</span></p>
-                            <p id="contact-email" class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-4 text-brand-accent flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="#" class="hover:text-brand-accent transition-colors">Loading...</a></p>
-                            <p id="contact-phone" class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-4 text-brand-accent flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="#" class="hover:text-brand-accent transition-colors">Loading...</a></p>
-                        </div>
+                    <div class="space-y-6 flex flex-col justify-center">
+                        <p id="contact-address" class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-4 text-brand-accent flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Loading...</span></p>
+                        <p id="contact-email" class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-4 text-brand-accent flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="#" class="hover:text-brand-accent transition-colors">Loading...</a></p>
+                        <p id="contact-phone" class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-4 text-brand-accent flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="#" class="hover:text-brand-accent transition-colors">Loading...</a></p>
                     </div>
-
+                </div>
+                 <div class="mt-16 rounded-lg shadow-lg overflow-hidden" data-aos="fade-up">
+                    <iframe id="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118105.77610057032!2d73.14339894760233!3d22.32255306659714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc8ab91a3ddab%3A0xac39d3bfe1473fb8!2sVadodara%2C%20Gujarat%2C%20India!5e0!3m2!1sen!2sus!4v1725907475000!5m2!1sen!2sus" class="w-full h-96" style="border:0; filter: invert(90%) hue-rotate(180deg);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
@@ -174,10 +184,7 @@
     <footer class="bg-black/50 text-white text-center py-12 border-t border-white/10">
         <div class="container mx-auto px-6">
             <p class="font-heading text-xl mb-2">Choudhary Display</p>
-            <div class="flex justify-center space-x-6 my-4">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2 0-4.5 1-4.5 4.5 0 1.4 1 2.5 2.5 2.5 1.5 0 2-1 2-2.5 0-1.5-1-4-1-4-1 0-1.5 2-1.5 2.5 0 1.5 1.5 2.5 3 2.5 2.5 0 4-2 4-5s-2-5-5-5c-3.5 0-5.5 2.5-5.5 5 0 1 .5 2 1 2.5 0 0 .5-2 .5-2.5 0-1-1-2-1-3.5 0-2.5 2-4.5 5-4.5 3.5 0 6 2.5 6 5.5 0 3-2 5.5-5 5.5-1 0-2-.5-2-1 0-1 .5-1.5.5-2.5"/></svg></a>
+            <div id="social-links" class="flex justify-center space-x-6 my-4">
             </div>
             <p class="text-gray-500 mt-4">&copy; 2025 Choudhary Display. All Rights Reserved.</p>
         </div>
@@ -188,16 +195,15 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-       const firebaseConfig = {
-          apiKey: "AIzaSyBrj6yLuYawxAeFy47GIFNBJACpdQFfGS4",
-          authDomain: "vikas-641ff.firebaseapp.com",
-          projectId: "vikas-641ff",
-          storageBucket: "vikas-641ff.firebasestorage.app",
-          messagingSenderId: "87032367782",
-          appId: "1:87032367782:web:c7eaad7f751d1f63a44267",
-          measurementId: "G-28BBT4CWLP"
+        const firebaseConfig = {
+          apiKey: "AIzaSyDOtz9ec2nid25VEUMoBzh3KlKWGWR5AnU",
+          authDomain: "vikas-69155.firebaseapp.com",
+          projectId: "vikas-69155",
+          storageBucket: "vikas-69155.appspot.com",
+          messagingSenderId: "911123585574",
+          appId: "1:911123585574:web:42138071d4223a873064e7"
         };
-
+        
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const contentRef = doc(db, 'websiteContent', 'main');
@@ -206,46 +212,37 @@
             if (doc.exists()) {
                 const data = doc.data();
                 
-                // --- ABOUT SECTION ---
-                document.getElementById('about-text').textContent = data.aboutText || 'Default about text.';
+                // Load Business Logo
+                const headerLogo = document.getElementById('header-logo');
+                if (data.businessLogoUrl) {
+                    headerLogo.src = data.businessLogoUrl;
+                    headerLogo.classList.remove('hidden');
+                } else {
+                    headerLogo.classList.add('hidden');
+                }
 
-                // --- SERVICES SECTION ---
+                // Update About Section
+                document.getElementById('about-text').textContent = data.aboutText || '';
+
+                // Update Services
                 const servicesGrid = document.getElementById('services-grid');
                 servicesGrid.innerHTML = ''; 
-                const services = [data.service1, data.service2, data.service3, data.service4].filter(Boolean);
-                
-                if(services.length) {
-                    const icons = [
-                        `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto h-12 w-12 transform transition-transform duration-300 group-hover:scale-110"><path d="M12 5a3 3 0 1 1 3 3m-3-3a3 3 0 1 0-3 3m3-3v1M12 8a3 3 0 1 0 3 3M12 8a3 3 0 1 1-3 3m3-3v1m-3 3a3 3 0 1 0 3 3m-3-3a3 3 0 1 1-3 3m3-3v1m-3 3a3 3 0 1 1 3 3m-3-3a3 3 0 1 0-3 3m3-3v1"/></svg>`,
-                        `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto h-12 w-12 transform transition-transform duration-300 group-hover:scale-110"><path d="m19 20-9-16-9 16h18Z"/><path d="m9 12 3-6 3 6"/><path d="M3 20h18"/></svg>`,
-                        `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto h-12 w-12 transform transition-transform duration-300 group-hover:scale-110"><path d="M15 14c.2-1 .7-1.7 1.5-2.5C17.7 10.2 18 9 18 7.5a6 6 0 0 0-12 0c0 1.5.3 2.7 1.5 3.9.8.8 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>`,
-                        `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto h-12 w-12 transform transition-transform duration-300 group-hover:scale-110"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 12h18"/><path d="M12 3v18"/></svg>`
-                    ];
-                    services.forEach((service, i) => {
+                if(data.services?.length) {
+                    data.services.forEach((service, i) => {
                         const serviceEl = document.createElement('div');
-                        serviceEl.className = "group bg-brand-card p-8 rounded-lg text-center border border-white/10 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-accent/10 transition-all";
+                        serviceEl.className = "bg-brand-card p-8 rounded-lg text-center border border-white/10 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-accent/10 transition-all";
                         serviceEl.setAttribute('data-aos', 'fade-up');
                         serviceEl.setAttribute('data-aos-delay', (i + 1) * 100);
-                        serviceEl.innerHTML = `
-                            <div class="mb-4 text-brand-accent transition-colors group-hover:text-white">
-                                ${icons[i] || icons[0]}
-                            </div>
-                            <h3 class="font-heading text-2xl text-brand-primary">${service}</h3>`;
+                        serviceEl.innerHTML = `<h3 class="font-heading text-2xl text-brand-primary">${service}</h3>`;
                         servicesGrid.appendChild(serviceEl);
                     });
                 }
 
-                // --- PROCESS STEPS SECTION ---
-                const processStepsContainer = document.getElementById('process-steps');
-                processStepsContainer.innerHTML = '';
-                const processSteps = [
-                    { title: data.process1Title, description: data.process1Desc },
-                    { title: data.process2Title, description: data.process2Desc },
-                    { title: data.process3Title, description: data.process3Desc },
-                ].filter(step => step.title && step.description);
-
-                 if(processSteps.length) {
-                    processSteps.forEach((step, i) => {
+                // Update Process Steps
+                const processSteps = document.getElementById('process-steps');
+                processSteps.innerHTML = '';
+                 if(data.processSteps?.length) {
+                    data.processSteps.forEach((step, i) => {
                          const stepEl = document.createElement('div');
                          stepEl.setAttribute('data-aos', 'fade-right');
                          stepEl.setAttribute('data-aos-delay', (i + 2) * 100);
@@ -253,65 +250,134 @@
                             <h3 class="font-heading text-2xl text-brand-primary mb-2">0${i+1}. ${step.title}</h3>
                             <p class="text-gray-300">${step.description}</p>
                          `;
-                         processStepsContainer.appendChild(stepEl);
+                         processSteps.appendChild(stepEl);
                     });
                  }
 
-                // --- GALLERY SECTION ---
+                // Update Gallery
                 const galleryGrid = document.getElementById('gallery-grid');
                 galleryGrid.innerHTML = '';
-                 if(data.galleryImages && data.galleryImages.length) {
+                 if(data.galleryImages?.length) {
                     data.galleryImages.forEach(url => {
                         const galleryItem = document.createElement('div');
                         galleryItem.className = "group relative mb-4 rounded-lg overflow-hidden";
                         galleryItem.innerHTML = `
                             <img src="${url}" alt="Wedding Decoration" class="w-full h-auto transition-transform duration-500 group-hover:scale-105">
                             <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300"><path d="M15.5 6.5C14.2 4.5 12.1 3 10 3a7 7 0 0 0-7 7c0 2.1 1.5 4.2 3.5 5.5"/><path d="M2.5 13.5h6"/><path d="M15.5 17.5c1.3 2 3.4 3.5 5.5 3.5a7 7 0 0 0 7-7c0-2.1-1.5-4.2-3.5-5.5"/><path d="M21.5 10.5h-6"/></svg>
                             </div>
                         `;
                         galleryGrid.appendChild(galleryItem);
                     });
                  }
                  
-                // --- TESTIMONIALS SECTION ---
-                // Data for this will not load until it is added to the admin panel
+                // Update Testimonials
                 const testimonialsGrid = document.getElementById('testimonials-grid');
                 testimonialsGrid.innerHTML = '';
-
-                // --- CONTACT SECTION ---
-                document.querySelector('#contact-address span').textContent = data.contactAddress || 'Address not set.';
-                const emailLink = document.querySelector('#contact-email a');
-                emailLink.href = `mailto:${data.contactEmail || ''}`;
-                emailLink.textContent = data.contactEmail || 'Email not set.';
-                const phoneLink = document.querySelector('#contact-phone a');
-                phoneLink.href = `tel:${data.contactPhone || ''}`;
-                phoneLink.textContent = data.contactPhone || 'Phone not set.';
-
-                // --- GOOGLE MAP SECTION ---
-                const mapContainer = document.getElementById('map-container');
-                if (data.mapUrl) {
-                    let mapEmbed = data.mapUrl
-                        .replace(/width="[^"]*"/, 'width="100%"')
-                        .replace(/height="[^"]*"/, 'height="100%"')
-                        .replace('<iframe', '<iframe class="w-full h-full border-0"');
-                    mapContainer.innerHTML = mapEmbed;
-                } else {
-                    mapContainer.innerHTML = '<p class="text-gray-400 p-4">Map location not set.</p>';
+                if(data.testimonials?.length) {
+                    data.testimonials.forEach((testimonial, i) => {
+                        const testimonialEl = document.createElement('div');
+                        testimonialEl.className = "bg-brand-bg p-8 rounded-lg border border-white/10";
+                        testimonialEl.setAttribute('data-aos', 'fade-up');
+                        testimonialEl.setAttribute('data-aos-delay', (i + 1) * 100);
+                        testimonialEl.innerHTML = `
+                            <p class="text-gray-300 italic mb-6">"${testimonial.quote}"</p>
+                            <div class="flex items-center">
+                                <img class="w-12 h-12 rounded-full mr-4" src="https://placehold.co/100x100/E0E1DD/101010?text=${testimonial.name.charAt(0)}" alt="${testimonial.name}">
+                                <div>
+                                    <h4 class="font-bold text-white">${testimonial.name}</h4>
+                                    <p class="text-sm text-brand-accent">${testimonial.event}</p>
+                                </div>
+                            </div>`;
+                        testimonialsGrid.appendChild(testimonialEl);
+                    });
                 }
+                
+                // Update Map
+                if(data.mapUrl) {
+                    const mapIframe = document.getElementById('map-iframe');
+                    const srcMatch = data.mapUrl.match(/src="([^"]+)"/);
+                    if (srcMatch && srcMatch[1]) {
+                        mapIframe.src = srcMatch[1];
+                    }
+                }
+                
+                // Update Social Links
+                const social = data.socialLinks || {};
+                const socialContainer = document.getElementById('social-links');
+                socialContainer.innerHTML = `
+                    <a href="${social.instagram || '#'}" target="_blank" class="text-gray-400 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+                    <a href="${social.facebook || '#'}" target="_blank" class="text-gray-400 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="${social.pinterest || '#'}" target="_blank" class="text-gray-400 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2 0-4.5 1-4.5 4.5 0 1.4 1 2.5 2.5 2.5 1.5 0 2-1 2-2.5 0-1.5-1-4-1-4-1 0-1.5 2-1.5 2.5 0 1.5 1.5 2.5 3 2.5 2.5 0 4-2 4-5s-2-5-5-5c-3.5 0-5.5 2.5-5.5 5 0 1 .5 2 1 2.5 0 0 .5-2 .5-2.5 0-1-1-2-1-3.5 0-2.5 2-4.5 5-4.5 3.5 0 6 2.5 6 5.5 0 3-2 5.5-5 5.5-1 0-2-.5-2-1 0-1 .5-1.5.5-2.5"/></svg></a>
+                `;
 
-            } else {
-                console.log("No content document found!");
-                document.getElementById('about-text').textContent = 'Welcome! Please use the admin panel to update this content.';
+                // Update Contact Info
+                const contact = data.contactInfo || {};
+                document.querySelector('#contact-address span').textContent = contact.address || '';
+                const emailLink = document.querySelector('#contact-email a'); emailLink.href = `mailto:${contact.email || ''}`; emailLink.textContent = contact.email || '';
+                const phoneLink = document.querySelector('#contact-phone a'); phoneLink.href = `tel:${contact.phone || ''}`; phoneLink.textContent = contact.phone || '';
             }
         });
 
         AOS.init({ duration: 800, once: true });
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // --- GEMINI API: Vision Helper ---
+        const visionHelperBtn = document.getElementById('vision-helper-btn');
+        const visionMessage = document.getElementById('message');
+        const visionText = document.getElementById('vision-helper-text');
+        const visionSpinner = document.getElementById('vision-helper-spinner');
+
+        visionHelperBtn.addEventListener('click', async () => {
+            const userInput = visionMessage.value;
+            if (userInput.trim().length < 5) {
+                alert("Please describe your vision in a few words first!");
+                return;
+            }
+
+            visionText.classList.add('hidden');
+            visionSpinner.classList.remove('hidden');
+            visionHelperBtn.disabled = true;
+
+            const systemPrompt = `You are a world-class wedding decorator. A potential client is describing their vision. Take their simple idea and expand it into an inspiring, elegant, and professional paragraph (2-3 sentences). Focus on specific visual details like colors, flowers, fabrics, and lighting to help them visualize the beautiful event you can create.`;
+            const userQuery = `My idea is: "${userInput}"`;
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: userQuery }] }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] },
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    visionMessage.value = candidate.content.parts[0].text;
+                } else {
+                    visionMessage.value += "\n\n[Could not generate ideas at this time, but we would love to discuss it with you!]"
+                }
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                visionMessage.value += "\n\n[There was an error generating ideas, but we are excited to hear more from you!]"
+            } finally {
+                visionText.classList.remove('hidden');
+                visionSpinner.classList.add('hidden');
+                visionHelperBtn.disabled = false;
+            }
         });
+
     </script>
 </body>
 </html>
+
