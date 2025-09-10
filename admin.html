@@ -67,7 +67,10 @@
                 
                 <div class="bg-[#1C1C1C] p-6 rounded-lg shadow-lg col-span-1 md:col-span-2">
                     <h2 class="text-2xl font-bold mb-4 text-white">About Section</h2>
-                    <form id="about-form"><textarea id="about-text" rows="5" class="w-full p-3 rounded form-input"></textarea><button type="submit" class="mt-4 px-6 py-2 rounded btn-save font-bold">Save About</button></form>
+                    <form id="about-form">
+                        <textarea id="about-text" rows="5" class="w-full p-3 rounded form-input"></textarea>
+                        <button type="submit" class="mt-4 px-6 py-2 rounded btn-save font-bold">Save About</button>
+                    </form>
                 </div>
 
                 <div class="bg-[#1C1C1C] p-6 rounded-lg shadow-lg">
@@ -97,9 +100,18 @@
                 <div class="bg-[#1C1C1C] p-6 rounded-lg shadow-lg col-span-1 md:col-span-2">
                     <h2 class="text-2xl font-bold mb-4 text-white">Process Steps</h2>
                     <form id="process-form" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><input type="text" id="process-1-title" placeholder="Step 1 Title" class="w-full p-3 rounded form-input"><input type="text" id="process-1-desc" placeholder="Step 1 Description" class="w-full p-3 rounded form-input"></div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><input type="text" id="process-2-title" placeholder="Step 2 Title" class="w-full p-3 rounded form-input"><input type="text" id="process-2-desc" placeholder="Step 2 Description" class="w-full p-3 rounded form-input"></div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4"><input type="text" id="process-3-title" placeholder="Step 3 Title" class="w-full p-3 rounded form-input"><input type="text" id="process-3-desc" placeholder="Step 3 Description" class="w-full p-3 rounded form-input"></div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" id="process-1-title" placeholder="Step 1 Title" class="w-full p-3 rounded form-input">
+                            <input type="text" id="process-1-desc" placeholder="Step 1 Description" class="w-full p-3 rounded form-input">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" id="process-2-title" placeholder="Step 2 Title" class="w-full p-3 rounded form-input">
+                            <input type="text" id="process-2-desc" placeholder="Step 2 Description" class="w-full p-3 rounded form-input">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" id="process-3-title" placeholder="Step 3 Title" class="w-full p-3 rounded form-input">
+                            <input type="text" id="process-3-desc" placeholder="Step 3 Description" class="w-full p-3 rounded form-input">
+                        </div>
                         <button type="submit" class="mt-2 px-6 py-2 rounded btn-save font-bold">Save Process Steps</button>
                     </form>
                 </div>
@@ -127,8 +139,7 @@
                      </div>
                      <form id="gallery-form">
                         <div id="gallery-inputs" class="space-y-4">
-                            <!-- Previews and URL fields will be dynamically inserted here -->
-                        </div>
+                            </div>
                         <button type="submit" class="mt-6 px-6 py-2 rounded btn-save font-bold w-full">Save Entire Gallery</button>
                      </form>
                 </div>
@@ -143,14 +154,14 @@
         import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
         
         const firebaseConfig = {
-  apiKey: "AIzaSyBrj6yLuYawxAeFy47GIFNBJACpdQFfGS4",
-  authDomain: "vikas-641ff.firebaseapp.com",
-  projectId: "vikas-641ff",
-  storageBucket: "vikas-641ff.firebasestorage.app",
-  messagingSenderId: "87032367782",
-  appId: "1:87032367782:web:c7eaad7f751d1f63a44267",
-  measurementId: "G-28BBT4CWLP"
-};
+          apiKey: "AIzaSyBrj6yLuYawxAeFy47GIFNBJACpdQFfGS4",
+          authDomain: "vikas-641ff.firebaseapp.com",
+          projectId: "vikas-641ff",
+          storageBucket: "vikas-641ff.firebasestorage.app",
+          messagingSenderId: "87032367782",
+          appId: "1:87032367782:web:c7eaad7f751d1f63a44267",
+          measurementId: "G-28BBT4CWLP"
+        };
 
         // IMPORTANT: Replace this with your Google Apps Script Web App URL
         const googleWebAppUrl = 'YOUR_GOOGLE_WEB_APP_URL_HERE'; 
@@ -158,36 +169,135 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
-
         const contentRef = doc(db, 'websiteContent', 'main');
         
         // --- AUTH & UI ---
         const authSection = document.getElementById('auth-section');
         const adminPanel = document.getElementById('admin-panel');
+
         onAuthStateChanged(auth, user => {
-            if (user) { adminPanel.classList.remove('hidden'); authSection.classList.add('hidden'); loadContent(); } 
-            else { adminPanel.classList.add('hidden'); authSection.classList.remove('hidden'); }
+            if (user) { 
+                adminPanel.classList.remove('hidden'); 
+                authSection.classList.add('hidden'); 
+                loadContent(); 
+            } else { 
+                adminPanel.classList.add('hidden'); 
+                authSection.classList.remove('hidden'); 
+            }
         });
-        document.getElementById('login-form').addEventListener('submit', async e => { e.preventDefault(); /* ... (login logic) ... */ });
+
+        document.getElementById('login-form').addEventListener('submit', async e => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const loginError = document.getElementById('login-error');
+            const loginButton = document.getElementById('login-button');
+            const loginButtonText = document.getElementById('login-button-text');
+
+            loginButton.disabled = true;
+            loginButtonText.textContent = 'Logging in...';
+            loginError.textContent = '';
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                console.error("Login Error:", error.message);
+                loginError.textContent = 'Invalid email or password.';
+            } finally {
+                loginButton.disabled = false;
+                loginButtonText.textContent = 'Login';
+            }
+        });
+
         document.getElementById('logout-btn').addEventListener('click', () => signOut(auth));
         
         const toast = document.getElementById('toast-notification');
-        function showToast(message = 'Saved!') { toast.textContent = message; toast.classList.remove('opacity-0'); setTimeout(() => toast.classList.add('opacity-0'), 3000); }
+        function showToast(message = 'Saved!') { 
+            toast.textContent = message; 
+            toast.classList.remove('opacity-0'); 
+            setTimeout(() => toast.classList.add('opacity-0'), 3000); 
+        }
 
         async function loadContent() {
              const docSnap = await getDoc(contentRef);
              if (docSnap.exists()) {
                  const data = docSnap.data();
-                 // Load all other fields...
+                 // About Section
+                 document.getElementById('about-text').value = data.aboutText || '';
+                 // Contact & Social Section
+                 document.getElementById('contact-address').value = data.contactAddress || '';
+                 document.getElementById('contact-email').value = data.contactEmail || '';
+                 document.getElementById('contact-phone').value = data.contactPhone || '';
+                 document.getElementById('contact-instagram').value = data.contactInstagram || '';
+                 document.getElementById('contact-facebook').value = data.contactFacebook || '';
+                 document.getElementById('contact-pinterest').value = data.contactPinterest || '';
+                 // Services Section
+                 document.getElementById('service-1').value = data.service1 || '';
+                 document.getElementById('service-2').value = data.service2 || '';
+                 document.getElementById('service-3').value = data.service3 || '';
+                 document.getElementById('service-4').value = data.service4 || '';
+                 // Process Steps Section
+                 document.getElementById('process-1-title').value = data.process1Title || '';
+                 document.getElementById('process-1-desc').value = data.process1Desc || '';
+                 document.getElementById('process-2-title').value = data.process2Title || '';
+                 document.getElementById('process-2-desc').value = data.process2Desc || '';
+                 document.getElementById('process-3-title').value = data.process3Title || '';
+                 document.getElementById('process-3-desc').value = data.process3Desc || '';
+                 // Map Section
+                 document.getElementById('map-url').value = data.mapUrl || '';
+                 // Gallery Images
                  renderGalleryItems(data.galleryImages || []);
-             } else { renderGalleryItems([]); }
+             } else {
+                 console.log("No such document! You may need to save each section once to create it.");
+                 renderGalleryItems([]); 
+             }
         }
 
-        async function saveData(data) { await setDoc(contentRef, data, { merge: true }); showToast(); }
+        async function saveData(data) { 
+            await setDoc(contentRef, data, { merge: true }); 
+            showToast(); 
+        }
         
         // --- FORM SUBMISSIONS ---
-        document.getElementById('about-form').addEventListener('submit', e => { e.preventDefault(); /* ... */ });
-        // ... (all other form submission listeners) ...
+        document.getElementById('about-form').addEventListener('submit', e => {
+            e.preventDefault();
+            saveData({ aboutText: document.getElementById('about-text').value });
+        });
+        document.getElementById('contact-form').addEventListener('submit', e => {
+            e.preventDefault();
+            saveData({
+                contactAddress: document.getElementById('contact-address').value,
+                contactEmail: document.getElementById('contact-email').value,
+                contactPhone: document.getElementById('contact-phone').value,
+                contactInstagram: document.getElementById('contact-instagram').value,
+                contactFacebook: document.getElementById('contact-facebook').value,
+                contactPinterest: document.getElementById('contact-pinterest').value
+            });
+        });
+        document.getElementById('services-form').addEventListener('submit', e => {
+            e.preventDefault();
+            saveData({
+                service1: document.getElementById('service-1').value,
+                service2: document.getElementById('service-2').value,
+                service3: document.getElementById('service-3').value,
+                service4: document.getElementById('service-4').value
+            });
+        });
+        document.getElementById('process-form').addEventListener('submit', e => {
+            e.preventDefault();
+            saveData({
+                process1Title: document.getElementById('process-1-title').value,
+                process1Desc: document.getElementById('process-1-desc').value,
+                process2Title: document.getElementById('process-2-title').value,
+                process2Desc: document.getElementById('process-2-desc').value,
+                process3Title: document.getElementById('process-3-title').value,
+                process3Desc: document.getElementById('process-3-desc').value
+            });
+        });
+        document.getElementById('map-form').addEventListener('submit', e => {
+            e.preventDefault();
+            saveData({ mapUrl: document.getElementById('map-url').value });
+        });
 
         // --- GALLERY MANAGEMENT ---
         const galleryInputsContainer = document.getElementById('gallery-inputs');
@@ -219,7 +329,9 @@
 
         function renderGalleryItems(urls) {
             galleryInputsContainer.innerHTML = '';
-            urls.forEach(url => galleryInputsContainer.appendChild(createGalleryItemElement(url)));
+            if (urls) {
+                urls.forEach(url => galleryInputsContainer.appendChild(createGalleryItemElement(url)));
+            }
         }
 
         document.getElementById('add-url-field').addEventListener('click', () => {
@@ -264,4 +376,3 @@
     </script>
 </body>
 </html>
-
