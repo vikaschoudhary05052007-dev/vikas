@@ -12,7 +12,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <script>
@@ -20,382 +20,586 @@
         theme: {
           extend: {
             fontFamily: {
-              'heading': ['Cormorant Garamond', 'serif'],
+              'heading': ['Playfair Display', 'serif'],
               'body': ['Poppins', 'sans-serif'],
             },
             colors: {
-              'brand-bg': '#101010',
-              'brand-card': '#1C1C1C',
-              'brand-text': '#E0E1DD',
-              'brand-primary': '#FFFFFF',
-              'brand-accent': '#D4AF37',
+              'brand-bg': '#FBF9F6',       // Cream background
+              'brand-text': '#4D433A',      // Dark brown text
+              'brand-primary': '#111111',    // Dark headings
+              'brand-accent': '#C7A97F',      // Muted gold accent
+              'brand-accent-dark': '#B58A5D', // Darker gold for hover/buttons
             }
           }
         }
       }
     </script>
     <style>
-        .text-shadow { text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
+        .section-tag {
+            @apply inline-block text-brand-accent-dark border border-brand-accent-dark rounded-full px-6 py-2 text-sm font-medium;
+        }
+        .form-input {
+            @apply w-full p-3 bg-white border border-brand-accent/50 rounded-lg text-brand-text focus:ring-2 focus:ring-brand-accent-dark focus:outline-none;
+        }
+        /* ===== NEW CSS FOR HERO BACKGROUND ===== */
+        .hero-background {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            isolation: isolate; /* Creates new stacking context */
+        }
+        .hero-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(25, 25, 25, 0.4); /* Dark overlay */
+            z-index: -1;
+        }
+        .hero-background.no-image::after {
+            background-color: transparent; /* No overlay if no image */
+        }
     </style>
 </head>
 <body class="font-body bg-brand-bg text-brand-text overflow-x-hidden">
 
-    <header class="sticky top-0 z-50 bg-brand-bg/70 backdrop-blur-lg border-b border-white/10">
+    <header class="sticky top-0 z-50 bg-brand-bg/80 backdrop-blur-lg border-b border-brand-accent/30">
         <div class="container mx-auto px-6">
             <nav class="flex justify-between items-center py-4">
                 <a href="#" class="flex items-center space-x-3">
                     <img id="header-logo" src="" alt="Business Logo" class="h-10 w-10 rounded-full hidden object-cover">
                     <span class="font-heading text-2xl font-bold text-brand-primary">Choudhary Display</span>
                 </a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="font-medium text-gray-300 hover:text-white transition-colors">About</a>
-                    <a href="#services" class="font-medium text-gray-300 hover:text-white transition-colors">Services</a>
-                    <a href="#process" class="font-medium text-gray-300 hover:text-white transition-colors">Process</a>
-                    <a href="#gallery" class="font-medium text-gray-300 hover:text-white transition-colors">Gallery</a>
-                    <a href="#testimonials" class="font-medium text-gray-300 hover:text-white transition-colors">Testimonials</a>
-                    <a href="#contact" class="bg-brand-accent text-black font-bold px-6 py-2 rounded-full shadow-lg shadow-brand-accent/20 hover:shadow-xl hover:shadow-brand-accent/30 hover:-translate-y-0.5 transition-all">Get in Touch</a>
-                </div>
-                <button id="mobile-menu-button" class="md:hidden text-white">
+                
+                <nav class="hidden md:flex space-x-6 items-center">
+                    <a href="#home" class="font-medium text-brand-text hover:text-brand-accent-dark">Home</a>
+                    <a href="#services" class="font-medium text-brand-text hover:text-brand-accent-dark">Services</a>
+                    <a href="#about" class="font-medium text-brand-text hover:text-brand-accent-dark">About Us</a>
+                    <a href="#gallery" class="font-medium text-brand-text hover:text-brand-accent-dark">Gallery</a>
+                    <a href="#testimonials" class="font-medium text-brand-text hover:text-brand-accent-dark">Testimonials</a>
+                    <a href="#contact" class="bg-brand-accent-dark text-white font-bold px-5 py-2 rounded-full shadow-lg hover:-translate-y-0.5 transition-all">Contact Us</a>
+                </nav>
+
+                <button id="mobile-menu-button" class="md:hidden text-brand-primary border border-brand-primary p-1 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                 </button>
             </nav>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
-            <a href="#about" class="block text-gray-300 hover:text-white">About</a>
-            <a href="#services" class="block text-gray-300 hover:text-white">Services</a>
-            <a href="#process" class="block text-gray-300 hover:text-white">Process</a>
-            <a href="#gallery" class="block text-gray-300 hover:text-white">Gallery</a>
-            <a href="#testimonials" class="block text-gray-300 hover:text-white">Testimonials</a>
-            <a href="#contact" class="block bg-brand-accent text-black font-bold px-4 py-2 rounded-full text-center mt-2">Get in Touch</a>
-        </div>
     </header>
+    
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-3/4 h-full bg-brand-bg z-50 shadow-2xl p-6 space-y-4">
+        <a href="#home" class="block font-medium text-brand-text hover:text-brand-accent-dark">Home</a>
+        <a href="#services" class="block font-medium text-brand-text hover:text-brand-accent-dark">Services</a>
+        <a href="#about" class="block font-medium text-brand-text hover:text-brand-accent-dark">About Us</a>
+        <a href="#gallery" class="block font-medium text-brand-text hover:text-brand-accent-dark">Gallery</a>
+        <a href="#testimonials" class="block font-medium text-brand-text hover:text-brand-accent-dark">Testimonial</a>
+        <a href="#contact" class="block font-medium text-brand-text hover:text-brand-accent-dark">Contact</a>
+        <button id="mobile-menu-close" class="absolute top-4 right-4 text-brand-primary">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+        </button>
+    </div>
+    <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/50 z-40"></div>
+
 
     <main>
-        <section class="relative h-[90vh] flex items-center justify-center text-center text-white overflow-hidden">
-            <video autoplay loop muted playsinline class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover -z-10">
-                <source src="https://cdn.pixabay.com/video/2023/04/05/157657-815175893_large.mp4" type="video/mp4">
-            </video>
-            <div class="absolute inset-0 bg-black/50"></div>
-            <div class="relative z-10 container px-6">
-                <h1 id="hero-title" class="font-heading text-5xl md:text-7xl font-bold text-shadow mb-4" data-aos="fade-down">Creating Spectacular Events Since 1990</h1>
-                <p id="hero-subtitle" class="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-shadow" data-aos="fade-up" data-aos-delay="200">Your premier party specialists, designing and decorating unforgettable moments with passion and expertise.</p>
-                <a href="#gallery" class="bg-brand-accent text-black font-bold px-8 py-3 rounded-full shadow-lg shadow-brand-accent/20 hover:shadow-xl hover:shadow-brand-accent/30 hover:-translate-y-0.5 transition-all" data-aos="zoom-in" data-aos-delay="400">View Our Work</a>
+        <section id="home" class="container mx-auto px-6 py-32 md:py-48 text-center hero-background">
+            <span class="section-tag mb-4 text-white border-white">Choudhary Display & Events</span>
+            <h1 class="font-heading text-4xl md:text-6xl text-white mb-6" data-aos="fade-up">Your Dream Event, Our Expertise.</h1>
+            <div class="flex justify-center space-x-4" data-aos="fade-up" data-aos-delay="100">
+                <a href="#contact" class="bg-brand-accent-dark text-white font-bold px-6 py-3 rounded-full shadow-lg hover:-translate-y-0.5 transition-all">Contact Us</a>
+                <a href="#about" class="bg-white text-brand-accent-dark border border-brand-accent-dark font-bold px-6 py-3 rounded-full hover:bg-brand-accent-dark hover:text-white transition-all">Know More</a>
             </div>
         </section>
 
-        <section id="about" class="py-24 bg-brand-card">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div data-aos="fade-right">
-                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2070&auto-format&fit=crop" alt="Elegant wedding table setting" class="rounded-lg shadow-2xl w-full h-auto">
-                    </div>
-                    <div data-aos="fade-left" data-aos-delay="200">
-                        <h2 class="font-heading text-4xl md:text-5xl font-bold text-brand-primary mb-6">A Legacy of Celebration</h2>
-                        <p id="about-text" class="text-gray-300 leading-relaxed">Loading...</p>
-                    </div>
+        <section id="services" class="container mx-auto px-6 py-16">
+            <div class="text-center mb-12">
+                <span class="section-tag mb-4">Our Services</span>
+                <h2 class="font-heading text-4xl md:text-5xl text-brand-primary">Our Grateful Events & Services</h2>
+            </div>
+            <div id="services-grid" class="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-8">
                 </div>
-            </div>
-        </section>
-
-        <section id="services" class="py-24">
-            <div class="container mx-auto px-6">
-                <h2 class="font-heading text-4xl md:text-5xl font-bold text-brand-primary text-center mb-4">What We Offer</h2>
-                <p class="text-center max-w-2xl mx-auto mb-16 text-gray-300">A full suite of decoration services to bring your event to life.</p>
-                <div id="services-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    </div>
-            </div>
-        </section>
-
-        <section id="process" class="py-24 bg-brand-card">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-16 items-center">
-                    <div data-aos="fade-right">
-                         <h2 class="font-heading text-4xl md:text-5xl font-bold text-brand-primary mb-8">Our Seamless Process</h2>
-                        <div id="process-steps" class="border-l-2 border-white/20 pl-8 space-y-8">
-                           </div>
-                    </div>
-                    <div data-aos="zoom-in-up" data-aos-delay="200">
-                        <img id="process-image" src="https://images.unsplash.com/photo-1587825140708-df876a5b974b?q=80&w=2070&auto-format&fit=crop" alt="Team discussing wedding plans" class="rounded-lg shadow-2xl w-full h-auto">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="gallery" class="py-24">
-            <div class="container mx-auto px-6">
-                <h2 class="font-heading text-4xl md:text-5xl font-bold text-brand-primary text-center mb-16">Our Beautiful Creations</h2>
-                <div id="gallery-grid" class="columns-2 md:columns-3 gap-4" data-aos="fade-up">
-                    </div>
-            </div>
         </section>
         
-        <section id="testimonials" class="py-24 bg-brand-card">
-            <div class="container mx-auto px-6">
-                <h2 class="font-heading text-4xl md:text-5xl font-bold text-brand-primary text-center mb-16" data-aos="fade-up">What Our Clients Say</h2>
-                <div id="testimonials-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    </div>
+        <section id="service-categories" class="container mx-auto px-6 py-16">
+             <div class="text-center mb-12">
+                <span class="section-tag mb-4">Themes</span>
+                <h2 class="font-heading text-4xl md:text-5xl text-brand-primary">Our Popular Themes</h2>
             </div>
-        </section>
-
-        <section id="featured" class="py-20">
-            <div class="container mx-auto px-6">
-                <h3 class="text-center text-gray-400 font-semibold uppercase tracking-widest mb-8" data-aos="fade-up">As Featured In</h3>
-                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-6" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://placehold.co/150x50/101010/E0E1DD?text=VOGUE" alt="Vogue Logo" class="h-8 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all">
-                    <img src="https://placehold.co/150x50/101010/E0E1DD?text=Brides" alt="Brides Logo" class="h-8 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all">
-                    <img src="https://placehold.co/150x50/101010/E0E1DD?text=Elle+Decor" alt="Elle Decor Logo" class="h-8 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all">
-                    <img src="https://placehold.co/150x50/101010/E0E1DD?text=WedMeGood" alt="WedMeGood Logo" class="h-8 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all">
+            <div id="service-categories-grid" class="flex flex-wrap justify-center gap-4">
                 </div>
+        </section>
+
+        <section id="key-services" class="container mx-auto px-6 py-16">
+            <div id="key-services-list" class="max-w-md md:max-w-2xl mx-auto space-y-4">
+                </div>
+        </section>
+
+        <section id="about" class="container mx-auto px-6 py-16">
+            <img id="about-image" src="" alt="About Us Image" class="w-full h-64 object-cover rounded-lg shadow-lg mb-8" data-aos="fade-up">
+            <div class="text-center" data-aos="fade-up">
+                <span class="section-tag mb-4">About Us</span>
+                <h2 class="font-heading text-4xl md:text-5xl text-brand-primary mb-6">Trusted Over 30+ Years of Experience</h2>
+                <p id="about-text" class="text-brand-text leading-relaxed max-w-2xl mx-auto">Loading...</p>
             </div>
         </section>
 
-        <section id="contact" class="py-24 bg-brand-card">
-            <div class="container mx-auto px-6">
-                <h2 class="font-heading text-4xl md:text-5xl font-bold text-brand-primary text-center mb-4">Let's Plan Your Dream Day</h2>
-                <p class="text-center max-w-2xl mx-auto mb-12 text-gray-300">Fill out the form for a free consultation. We'd love to hear about your vision.</p>
-                <div class="grid md:grid-cols-2 gap-12 bg-brand-bg p-8 md:p-12 rounded-lg shadow-2xl" data-aos="fade-up">
-                    <form>
-                        <div class="mb-5"><label for="name" class="block mb-2 font-medium">Full Name</label><input type="text" id="name" class="w-full p-3 bg-brand-card border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-brand-accent focus:outline-none" required></div>
-                        <div class="mb-5"><label for="email" class="block mb-2 font-medium">Email Address</label><input type="email" id="email" class="w-full p-3 bg-brand-card border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-brand-accent focus:outline-none" required></div>
-                        <div class="mb-5"><label for="date" class="block mb-2 font-medium">Event Date</label><input type="date" id="date" class="w-full p-3 bg-brand-card border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-brand-accent focus:outline-none"></div>
-                        <div class="relative">
-                             <label for="message" class="block mb-2 font-medium">Your Vision</label>
-                             <textarea id="message" rows="4" class="w-full p-3 bg-brand-card border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-brand-accent focus:outline-none" placeholder="e.g., a royal theme with gold and red" required></textarea>
-                             <button type="button" id="vision-helper-btn" class="absolute bottom-3 right-3 bg-brand-accent/20 text-brand-accent text-xs font-bold px-2 py-1 rounded hover:bg-brand-accent/40 transition-colors">
-                                 <span id="vision-helper-text">✨ Vision Helper</span>
-                                 <span id="vision-helper-spinner" class="hidden animate-spin rounded-full h-4 w-4 border-b-2 border-brand-accent"></span>
-                             </button>
+        <section id="facilities" class="container mx-auto px-6 py-16">
+             <div class="max-w-2xl mx-auto">
+                <h3 class="font-heading text-3xl text-brand-primary mb-6">Special Services</h3>
+                <div id="facilities-list" class="space-y-3">
+                    </div>
+             </div>
+        </section>
+
+        <section id="gallery" class="container mx-auto px-6 py-16">
+             <div class="text-center mb-12">
+                <span class="section-tag mb-4">Gallery</span>
+                <h2 class="font-heading text-4xl md:text-5xl text-brand-primary">Our Latest Events Photos</h2>
+            </div>
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" data-aos="fade-up">
+                </div>
+            <div class="text-center mt-12">
+                <button id="show-more-btn" class="hidden bg-brand-accent-dark text-white font-bold px-6 py-3 rounded-full shadow-lg hover:-translate-y-0.5 transition-all">
+                    Show All Images
+                </button>
+            </div>
+        </section>
+
+        <section id="testimonials" class="container mx-auto px-6 py-16">
+             <div class="text-center mb-12">
+                <span class="section-tag mb-4">Testimonial</span>
+                <h2 class="font-heading text-4xl md:text-5xl text-brand-primary">What Our Customers Say!</h2>
+            </div>
+            <div id="testimonials-grid" class="space-y-8 md:max-w-3xl md:mx-auto" data-aos="fade-up">
+                </div>
+        </section>
+
+        <section id="contact" class="container mx-auto px-6 py-16">
+            <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg border border-brand-accent/30" data-aos="fade-up">
+                <div class="text-center mb-8">
+                    <span class="section-tag mb-4">Book Us</span>
+                    <h2 class="font-heading text-4xl text-brand-primary">Where You Want Our Services</h2>
+                </div>
+                <form class="space-y-4">
+                    <div>
+                        <label for="name" class="block mb-1 font-medium text-brand-text">Full Name*</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-1 font-medium text-brand-text">Email*</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    <div>
+                        <label for="phone" class="block mb-1 font-medium text-brand-text">Contact No.*</label>
+                        <input type="tel" id="phone" class="form-input" required>
+                    </div>
+                     <div>
+                        <label for="location" class="block mb-1 font-medium text-brand-text">Event Location*</label>
+                        <input type="text" id="location" class="form-input" required>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                         <div>
+                            <label for="date" class="block mb-1 font-medium text-brand-text">Event Date*</label>
+                            <input type="date" id="date" class="form-input" required>
                         </div>
-                        <button type="submit" class="bg-brand-accent text-black font-bold px-8 py-3 rounded-full shadow-lg shadow-brand-accent/20 hover:shadow-xl hover:shadow-brand-accent/30 hover:-translate-y-0.5 transition-all w-full mt-5">Send Message</button>
-                    </form>
-                    <div class="space-y-6 flex flex-col justify-center">
-                        <p id="contact-address" class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-4 text-brand-accent flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Loading...</span></p>
-                        <p id="contact-email" class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-4 text-brand-accent flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="#" class="hover:text-brand-accent transition-colors">Loading...</a></p>
-                        <p id="contact-phone" class="flex items-start"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 mr-4 text-brand-accent flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="#" class="hover:text-brand-accent transition-colors">Loading...</a></p>
+                        <div>
+                            <label for="time" class="block mb-1 font-medium text-brand-text">Event Time*</label>
+                            <input type="time" id="time" class="form-input" required>
+                        </div>
                     </div>
-                </div>
-                 <div class="mt-16 rounded-lg shadow-lg overflow-hidden" data-aos="fade-up">
-                    <iframe id="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.611195657155!2d73.1685418154157!3d22.29267198532724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc61a5b481577%3A0x707322909a304e2!2sManjalpur%2C%20Vadodara%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1663438251211!5m2!1sen!2sin" class="w-full h-96" style="border:0; filter: invert(90%) hue-rotate(180deg);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+
+                    <button type="submit" class="w-full bg-brand-accent-dark text-white font-bold px-6 py-3 rounded-full shadow-lg hover:-translate-y-0.5 transition-all">Submit</button>
+                </form>
             </div>
         </section>
-    </main>
 
-    <footer class="bg-black/50 text-white text-center py-12 border-t border-white/10">
-        <div class="container mx-auto px-6">
-            <p class="font-heading text-xl mb-2">Choudhary Display</p>
-            <div id="social-links" class="flex justify-center space-x-6 my-4">
+        <section id="map" class="container mx-auto px-6 py-16">
+            <div class="text-center mb-12">
+                <span class="section-tag mb-4">Find Us</span>
+                <h2 class="font-heading text-4xl md:text-5xl text-brand-primary">Our Location</h2>
             </div>
+            <div class="overflow-hidden rounded-lg shadow-lg border border-brand-accent/30" data-aos="fade-up">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.0338117744377!2d73.2422967752929!3d22.314560979676333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fcfd1e201436f%3A0x4efe9553a95ea4b5!2sChoudhary%20display!5e0!3m2!1sen!2sin!4v1763290160539!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="350" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+        </main>
+
+    <footer class="bg-brand-bg text-brand-text text-center py-12 border-t border-brand-accent/30 mt-16">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center mb-6">
+                 <img id="footer-logo" src="" alt="Business Logo" class="h-16 w-16 rounded-full hidden object-cover">
+            </div>
+            
+            <div id="contact-info" class="space-y-3 max-w-md mx-auto mb-6">
+                </div>
+
+            <div id="social-links" class="flex justify-center space-x-6 my-4">
+                </div>
             <p class="text-gray-500 mt-4">© 2025 Choudhary Display. All Rights Reserved.</p>
         </div>
     </footer>
     
+    <button id="scroll-top-btn" class="hidden fixed bottom-6 right-6 bg-brand-accent-dark text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-opacity">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
+    
+    <div id="gallery-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div id="modal-overlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm"></div>
+        
+        <div class="relative z-10 container mx-auto px-6 py-16">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="font-heading text-4xl text-white">Our Gallery</h2>
+                <button id="modal-close-btn" class="text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+                </button>
+            </div>
+            
+            <div id="modal-gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                </div>
+        </div>
+    </div>
+    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        const firebaseConfig = {
-          apiKey: "AIzaSyDOtz9ec2nid25VEUMoBzh3KlKWGWR5AnU",
-          authDomain: "vikas-69155.firebaseapp.com",
-          projectId: "vikas-69155",
-          storageBucket: "vikas-69155.appspot.com",
-          messagingSenderId: "911123585574",
-          appId: "1:911123585574:web:42138071d4223a873064e7"
-        };
+        // ** Firebase Has Been Removed **
         
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const contentRef = doc(db, 'websiteContent', 'main');
+        // ========================================================================
+        // ================== YOUR WEBSITE DATA (EDIT THIS) =======================
+        // ========================================================================
+        
+        const websiteData = {
+          "seo": {
+            "title": "Choudhary Display - Premier Event & Wedding Planner",
+            "description": "With over 30 years of experience, Choudhary Display turns your dream events into reality. Specializing in weddings, corporate events, and more.",
+            "keywords": "wedding planner, event planner, party specialist, choudhary display, corporate events, wedding decoration",
+            "faviconUrl": "images/favicon-32x32.png"
+          },
+          
+          // ========== ADD A BACKGROUND IMAGE PATH HERE ==========
+          "heroImageUrl": "images/hero1.jpeg", // e.g., "images/my-main-banner.jpg"
 
-        onSnapshot(contentRef, (doc) => {
-            if (doc.exists()) {
-                const data = doc.data();
-                
-                // Load SEO
-                const seoData = data.seo || {};
-                document.getElementById('page-title').textContent = seoData.title || 'Choudhary Display - Party Specialist';
-                document.getElementById('meta-description').setAttribute('content', seoData.description || 'Your premier party specialists, designing and decorating unforgettable moments with passion and expertise.');
-                document.getElementById('meta-keywords').setAttribute('content', seoData.keywords || 'party decor, wedding planner, event management');
-                if (seoData.faviconUrl) {
-                    document.getElementById('favicon-link').setAttribute('href', seoData.faviconUrl);
-                }
-
-                // Load Hero
-                const heroData = data.hero || {};
-                document.getElementById('hero-title').textContent = heroData.title || 'Creating Spectacular Events Since 1990';
-                document.getElementById('hero-subtitle').textContent = heroData.subtitle || 'Your premier party specialists, designing and decorating unforgettable moments with passion and expertise.';
-
-                // Load Business Logo
-                const headerLogo = document.getElementById('header-logo');
-                if (data.businessLogoUrl) {
-                    headerLogo.src = data.businessLogoUrl;
-                    headerLogo.classList.remove('hidden');
-                } else {
-                    headerLogo.classList.add('hidden');
-                }
-
-                // Update About Section
-                document.getElementById('about-text').textContent = data.aboutText || 'Loading...';
-
-                // Update Services
-                const servicesGrid = document.getElementById('services-grid');
-                servicesGrid.innerHTML = ''; 
-                if(data.services?.length) {
-                    data.services.forEach((service, i) => {
-                        const serviceEl = document.createElement('div');
-                        serviceEl.className = "bg-brand-card p-8 rounded-lg text-center border border-white/10 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-accent/10 transition-all";
-                        serviceEl.setAttribute('data-aos', 'fade-up');
-                        serviceEl.setAttribute('data-aos-delay', (i + 1) * 100);
-                        serviceEl.innerHTML = `<h3 class="font-heading text-2xl text-brand-primary">${service}</h3>`;
-                        servicesGrid.appendChild(serviceEl);
-                    });
-                }
-
-                // Update Process Steps
-                const processSteps = document.getElementById('process-steps');
-                processSteps.innerHTML = '';
-                 if(data.processSteps?.length) {
-                    data.processSteps.forEach((step, i) => {
-                         const stepEl = document.createElement('div');
-                         stepEl.setAttribute('data-aos', 'fade-right');
-                         stepEl.setAttribute('data-aos-delay', (i + 2) * 100);
-                         stepEl.innerHTML = `
-                            <h3 class="font-heading text-2xl text-brand-primary mb-2">0${i+1}. ${step.title}</h3>
-                            <p class="text-gray-300">${step.description}</p>
-                         `;
-                         processSteps.appendChild(stepEl);
-                    });
-                 }
-                // Update Process Image
-                if (data.processImageUrl) {
-                    document.getElementById('process-image').src = data.processImageUrl;
-                }
-
-
-                // Update Gallery
-                const galleryGrid = document.getElementById('gallery-grid');
-                galleryGrid.innerHTML = '';
-                 if(data.galleryImages?.length) {
-                    data.galleryImages.forEach(url => {
-                        const galleryItem = document.createElement('div');
-                        galleryItem.className = "group relative mb-4 rounded-lg overflow-hidden";
-                        galleryItem.innerHTML = `
-                            <img src="${url}" alt="Wedding Decoration" class="w-full h-auto transition-transform duration-500 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            </div>
-                        `;
-                        galleryGrid.appendChild(galleryItem);
-                    });
-                 }
-                 
-                // Update Testimonials
-                const testimonialsGrid = document.getElementById('testimonials-grid');
-                testimonialsGrid.innerHTML = '';
-                if(data.testimonials?.length) {
-                    data.testimonials.forEach((testimonial, i) => {
-                        const testimonialEl = document.createElement('div');
-                        testimonialEl.className = "bg-brand-bg p-8 rounded-lg border border-white/10";
-                        testimonialEl.setAttribute('data-aos', 'fade-up');
-                        testimonialEl.setAttribute('data-aos-delay', (i + 1) * 100);
-                        testimonialEl.innerHTML = `
-                            <p class="text-gray-300 italic mb-6">"${testimonial.quote}"</p>
-                            <div class="flex items-center">
-                                <img class="w-12 h-12 rounded-full mr-4" src="https://placehold.co/100x100/E0E1DD/101010?text=${testimonial.name.charAt(0)}" alt="${testimonial.name}">
-                                <div>
-                                    <h4 class="font-bold text-white">${testimonial.name}</h4>
-                                    <p class="text-sm text-brand-accent">${testimonial.event}</p>
-                                </div>
-                            </div>`;
-                        testimonialsGrid.appendChild(testimonialEl);
-                    });
-                }
-                
-                // Update Map
-                if(data.mapUrl) {
-                    const mapIframe = document.getElementById('map-iframe');
-                    const srcMatch = data.mapUrl.match(/src="([^"]+)"/);
-                    if (srcMatch && srcMatch[1]) {
-                        mapIframe.src = srcMatch[1];
-                    }
-                }
-                
-                // Update Social Links
-                const social = data.socialLinks || {};
-                const socialContainer = document.getElementById('social-links');
-                socialContainer.innerHTML = `
-                    <a href="${social.instagram || '#'}" target="_blank" class="text-gray-400 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
-                    <a href="${social.facebook || '#'}" target="_blank" class="text-gray-400 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-                    <a href="${social.pinterest || '#'}" target="_blank" class="text-gray-400 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12c-2 0-4.5 1-4.5 4.5 0 1.4 1 2.5 2.5 2.5 1.5 0 2-1 2-2.5 0-1.5-1-4-1-4-1 0-1.5 2-1.5 2.5 0 1.5 1.5 2.5 3 2.5 2.5 0 4-2 4-5s-2-5-5-5c-3.5 0-5.5 2.5-5.5 5 0 1 .5 2 1 2.5 0 0 .5-2 .5-2.5 0-1-1-2-1-3.5 0-2.5 2-4.5 5-4.5 3.5 0 6 2.5 6 5.5 0 3-2 5.5-5 5.5-1 0-2-.5-2-1 0-1 .5-1.5.5-2.5"/></svg></a>
-                `;
-
-                // Update Contact Info
-                const contact = data.contactInfo || {};
-                document.querySelector('#contact-address span').textContent = contact.address || 'Loading...';
-                const emailLink = document.querySelector('#contact-email a'); emailLink.href = `mailto:${contact.email || ''}`; emailLink.textContent = contact.email || 'Loading...';
-                const phoneLink = document.querySelector('#contact-phone a'); phoneLink.href = `tel:${contact.phone || ''}`; phoneLink.textContent = contact.phone || 'Loading...';
+          "businessLogoUrl": "images/logo.jpeg",
+          "aboutText": "For over 30 years, Choudhary Display has been the leading event specialist in our region. We believe in creating magical, unforgettable moments. Our mission is to combine your vision with our expertise to deliver flawless events. From intimate gatherings to grand celebrations, our dedicated team handles every detail with passion and precision.",
+          "aboutImageUrl": "images/aboutimg2.jpeg",
+          "services": [
+            {
+              "title": "Dream Weddings",
+              "imageUrl": "images/weddingimg1.jpeg"
+            },
+            {
+              "title": "Other Events",
+              "imageUrl": "images/otherimg1.jpeg"
             }
-        });
+          ],
+          "serviceCategories": [
+            "Haldi Themes",
+            "Reception Themes",
+            "Floral Decor",
+            "Modern & Minimal",
+            "Royal & Traditional"
+          ],
+          "keyServices": [
+            "Full-Service Planning",
+            "Venue Selection & Management",
+            "Catering & Menu Design",
+            "Vendor Coordination",
+            "Guest Management"
+          ],
+          // ========== ERROR 1: STRAY '.' REMOVED FROM HERE ==========
+          "facilities": [
+            "In-house DJ & Sound Systems",
+            "Custom Stage & Lighting Design",
+            "Interactive Photobooths",
+            "Valet & Transport Services"
+          ],
+          "galleryImages": [
+            "images/img1.jpeg",
+            "images/img2.jpeg",
+            "images/img3.jpeg",
+            "images/img4.jpeg",
+            "images/img5.jpeg",
+            "images/img6.jpeg",
+            "images/img7.jpeg",
+            "images/img8.jpeg",
+             "images/img9.jpeg",
+            "images/img10.jpeg",
+            "images/img11.jpeg",
+            "images/img12.jpeg",
+            "images/img13.jpeg",
+            "images/img14.jpeg"
 
+            
+          ],
+          "testimonials": [
+            {
+              "name": "Priya & Rohan Sharma",
+              "event": "Our Wedding",
+              "quote": "They made our day absolutely magical! Every single detail was perfect, and we didn't have to worry about a thing. We can't thank the Choudhary Display team enough!"
+            },
+            {
+              "name": "Mr. R. Gupta, CEO",
+              "event": "Annual Corporate Gala",
+              "quote": "Flawless execution for our annual gala. The team was professional, creative, and delivered beyond our expectations. Highly recommended for any corporate function."
+            }
+          ],
+          "contactInfo": {
+            "address": "Pancham Villa Sayaji Park Ajwa Road Vadodra Gujrat",
+            "phone": "+91 9328544199",
+            "email": "vikaschoudhary05052007@gmail.com"
+          },
+          "socialLinks": {
+            "instagram": "https.www.instagram.com/chaudharydisplay?igsh=ZW94bnp2cTJvaThl",
+            "facebook": "https.www.facebook.com/share/1CRCG5GXAD",
+            "linkedin": "https.www.linkedin.com/company/choudharydisplay"
+          }
+        };
+
+        // ========================================================================
+        // ================== END OF DATA (DO NOT EDIT BELOW) =====================
+        // ========================================================================
+
+
+        // --- SCRIPT TO LOAD DATA INTO HTML ---
+        (function() {
+            const data = websiteData; 
+
+            // SEO
+            const seoData = data.seo || {};
+            document.getElementById('page-title').textContent = seoData.title || 'Choudhary Display';
+            document.getElementById('meta-description').setAttribute('content', seoData.description || '');
+            document.getElementById('meta-keywords').setAttribute('content', seoData.keywords || '');
+            if (seoData.faviconUrl) {
+                document.getElementById('favicon-link').setAttribute('href', seoData.faviconUrl);
+            }
+
+            // Logos
+            const headerLogo = document.getElementById('header-logo');
+            const footerLogo = document.getElementById('footer-logo');
+            if (data.businessLogoUrl) {
+                headerLogo.src = data.businessLogoUrl;
+                footerLogo.src = data.businessLogoUrl;
+                headerLogo.classList.remove('hidden');
+                footerLogo.classList.remove('hidden');
+            } else {
+                headerLogo.classList.add('hidden');
+                footerLogo.classList.add('hidden');
+            }
+
+            // ========== NEW HERO BACKGROUND LOGIC ==========
+            const homeSection = document.getElementById('home');
+            if (data.heroImageUrl) {
+                homeSection.style.backgroundImage = `url('${data.heroImageUrl}')`;
+                homeSection.classList.remove('no-image');
+            } else {
+                homeSection.style.backgroundImage = 'none';
+                homeSection.classList.add('no-image'); 
+            }
+
+            // About
+            document.getElementById('about-text').textContent = data.aboutText || 'Loading...';
+            if (data.aboutImageUrl) {
+                document.getElementById('about-image').src = data.aboutImageUrl;
+            }
+
+            // Services (Corporate, Wedding)
+            const servicesGrid = document.getElementById('services-grid');
+            servicesGrid.innerHTML = '';
+            if(data.services?.length) {
+                data.services.forEach(service => {
+                    const el = document.createElement('div');
+                    el.className = "bg-white rounded-lg shadow-lg border border-brand-accent/30 overflow-hidden";
+                    el.setAttribute('data-aos', 'fade-up');
+                    el.innerHTML = `
+                        <img src="${service.imageUrl}" alt="${service.title}" class="w-full h-64 object-cover">
+                        <h3 class="font-heading text-3xl text-brand-primary p-4">${service.title}</h3>
+                    `;
+                    servicesGrid.appendChild(el);
+                });
+            }
+            
+            // Service Categories (Themes)
+            const categoriesGrid = document.getElementById('service-categories-grid');
+            categoriesGrid.innerHTML = '';
+            if(data.serviceCategories?.length) {
+                data.serviceCategories.forEach((category, i) => {
+                    const el = document.createElement('a');
+                    el.href = "#";
+                    const isFirst = i === 0;
+                    el.className = `font-bold px-6 py-3 rounded-full border border-brand-accent-dark transition-all ${isFirst ? 'bg-brand-accent-dark text-white' : 'bg-white text-brand-accent-dark hover:bg-brand-accent-dark hover:text-white'}`;
+                    el.textContent = category;
+                    categoriesGrid.appendChild(el);
+                });
+            }
+            
+            // Key Services (Features)
+            const keyServicesList = document.getElementById('key-services-list');
+            keyServicesList.innerHTML = '';
+            if(data.keyServices?.length) {
+                data.keyServices.forEach(service => {
+                    const el = document.createElement('div');
+                    el.className = "flex items-center text-brand-text";
+                    el.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-brand-accent-dark flex-shrink-0"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                        <span class="text-lg">${service}</span>
+                    `;
+                    keyServicesList.appendChild(el);
+                });
+            }
+            
+            // Facilities List (Special Services)
+            const facilitiesList = document.getElementById('facilities-list');
+            facilitiesList.innerHTML = '';
+            if(data.facilities?.length) {
+                data.facilities.forEach(facility => {
+                    const el = document.createElement('div');
+                    el.className = "flex items-center text-brand-text";
+                    el.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-green-600 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                        <span class="text-lg">${facility}</span>
+                    `;
+                    facilitiesList.appendChild(el);
+                });
+            }
+
+            // Gallery Logic
+            const galleryGrid = document.getElementById('gallery-grid');
+            const modalGalleryGrid = document.getElementById('modal-gallery-grid');
+            const showMoreBtn = document.getElementById('show-more-btn');
+            
+            galleryGrid.innerHTML = '';
+            modalGalleryGrid.innerHTML = '';
+
+             if(data.galleryImages?.length) {
+                data.galleryImages.forEach((url, i) => {
+                    const imgHtml = `<img src="${url}" alt="Gallery Image ${i + 1}" class="w-full h-64 object-cover">`; // Set fixed height
+                    
+                    // Add ALL images to the modal
+                    const modalImgEl = document.createElement('div');
+                    modalImgEl.className = "rounded-lg shadow-lg overflow-hidden border border-brand-accent/30";
+                    modalImgEl.innerHTML = `<img src="${url}" alt="Gallery Image ${i + 1}" class="w-full h-auto object-cover">`; // Modal has auto height
+                    modalGalleryGrid.appendChild(modalImgEl);
+                    
+                    // Add only the FIRST 4 images to the main page grid
+                    if (i < 4) {
+                        const gridImgEl = document.createElement('div');
+                        gridImgEl.className = "rounded-lg shadow-lg overflow-hidden border border-brand-accent/30 h-64";
+                        gridImgEl.innerHTML = imgHtml; 
+                        galleryGrid.appendChild(gridImgEl);
+                    }
+                });
+                
+                if (data.galleryImages.length > 4) {
+                    showMoreBtn.classList.remove('hidden');
+                } else {
+                    showMoreBtn.classList.add('hidden');
+                }
+                
+             } else {
+                showMoreBtn.classList.add('hidden');
+             }
+             
+            // Testimonials
+            const testimonialsGrid = document.getElementById('testimonials-grid');
+            testimonialsGrid.innerHTML = '';
+            if(data.testimonials?.length) {
+                data.testimonials.forEach(testimonial => {
+                    const el = document.createElement('div');
+                    el.className = "bg-white p-6 rounded-lg shadow-lg border border-brand-accent/30 relative";
+                    el.innerHTML = `
+                        <span class="font-heading text-6xl text-brand-accent absolute top-0 right-4">"</span>
+                        <h3 class="font-bold text-xl text-brand-primary">${testimonial.name}</h3>
+                        <p class="text-sm text-brand-accent-dark mb-3">${testimonial.event}</p>
+                        <p class="text-brand-text italic">"${testimonial.quote}"</p>
+                    `;
+                    testimonialsGrid.appendChild(el);
+                });
+            }
+            
+            // Footer Contact Info
+            const contact = data.contactInfo || {};
+            const contactContainer = document.getElementById('contact-info');
+            contactContainer.innerHTML = `
+                <p class="flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-brand-accent-dark"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>${contact.address || 'Loading...'}</span></p>
+                <p class="flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-brand-accent-dark"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:${contact.phone || ''}" class="hover:text-brand-accent-dark">${contact.phone || 'Loading...'}</a></p>
+                <p class="flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-brand-accent-dark"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="mailto:${contact.email || ''}" class="hover:text-brand-accent-dark">${contact.email || 'Loading...'}</a></p>
+            `;
+            
+            // Footer Social Links
+            const social = data.socialLinks || {};
+            const socialContainer = document.getElementById('social-links');
+            socialContainer.innerHTML = `
+                <a href="${social.instagram || '#'}" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+                <a href="${social.facebook || '#'}" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                <a href="${social.linkedin || '#'}" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+            `;
+        })();
+        
+        // --- AOS Initialization ---
         AOS.init({ duration: 800, once: true });
         
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        // --- Mobile Menu Toggle ---
+        const menuButton = document.getElementById('mobile-menu-button');
+        const closeButton = document.getElementById('mobile-menu-close');
+        const menu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('mobile-menu-overlay');
+        
+        // ========== ERROR 2: CORRECTED ARROW FUNCTION ==========
+        const openMenu = () => {
+            menu.classList.remove('hidden');
+            overlay.classList.remove('hidden');
+        };
+        
+        const closeMenu = () => {
+            menu.classList.add('hidden');
+            overlay.classList.add('hidden');
+        };
 
-        // --- GEMINI API: Vision Helper ---
-        const visionHelperBtn = document.getElementById('vision-helper-btn');
-        const visionMessage = document.getElementById('message');
-        const visionText = document.getElementById('vision-helper-text');
-        const visionSpinner = document.getElementById('vision-helper-spinner');
+        menuButton.addEventListener('click', openMenu);
+        closeButton.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
 
-        visionHelperBtn.addEventListener('click', async () => {
-            const userInput = visionMessage.value;
-            if (userInput.trim().length < 5) {
-                alert("Please describe your vision in a few words first!");
-                return;
+        // --- Gallery Modal Toggle ---
+        const showMoreBtn = document.getElementById('show-more-btn');
+        const galleryModal = document.getElementById('gallery-modal');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        const modalOverlay = document.getElementById('modal-overlay');
+        
+        const openGalleryModal = () => {
+            galleryModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        };
+        
+        const closeGalleryModal = () => {
+            galleryModal.classList.add('hidden');
+            document.body.style.overflow = ''; // Restore scrolling
+        };
+        
+        showMoreBtn.addEventListener('click', openGalleryModal);
+        modalCloseBtn.addEventListener('click', closeGalleryModal);
+        modalOverlay.addEventListener('click', closeGalleryModal);
+
+        // --- Scroll to Top Button ---
+        const scrollTopBtn = document.getElementById('scroll-top-btn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.remove('hidden');
+            } else {
+                scrollTopBtn.classList.add('hidden');
             }
-
-            visionText.classList.add('hidden');
-            visionSpinner.classList.remove('hidden');
-            visionHelperBtn.disabled = true;
-
-            const systemPrompt = `You are a world-class wedding decorator. A potential client is describing their vision. Take their simple idea and expand it into an inspiring, elegant, and professional paragraph (2-3 sentences). Focus on specific visual details like colors, flowers, fabrics, and lighting to help them visualize the beautiful event you can create.`;
-            const userQuery = `My idea is: "${userInput}"`;
-            // IMPORTANT: You need a valid Google AI Gemini API key for this feature to work.
-            const apiKey = "AIzaSyCTHOhLSjSSWkLjzSVZDVFd8qtJ5LlBzzw"; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
-            
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: userQuery }] }],
-                        systemInstruction: { parts: [{ text: systemPrompt }] },
-                    })
-                });
-
-                if (!response.ok) {
-                    throw new Error(`API call failed with status: ${response.status}`);
-                }
-                
-                const result = await response.json();
-                const candidate = result.candidates?.[0];
-
-                if (candidate && candidate.content?.parts?.[0]?.text) {
-                    visionMessage.value = candidate.content.parts[0].text;
-                } else {
-                    visionMessage.value += "\n\n[Could not generate ideas at this time, but we would love to discuss it with you!]"
-                }
-            } catch (error) {
-                console.error("Gemini API Error:", error);
-                visionMessage.value += "\n\n[There was an error generating ideas, but we are excited to hear more from you!]"
-            } finally {
-                visionText.classList.remove('hidden');
-                visionSpinner.classList.add('hidden');
-                visionHelperBtn.disabled = false;
-            }
+        });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // --- Contact Form Submission ---
@@ -403,20 +607,20 @@
         const submitButton = contactForm.querySelector('button[type="submit"]');
 
         contactForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Prevent the default form reload
-
+            e.preventDefault(); 
             const originalButtonText = submitButton.textContent;
             submitButton.disabled = true;
             submitButton.textContent = 'Sending...';
 
-            // IMPORTANT: Replace with your actual Google Apps Script Web App URL
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbyiq7Vb-1FbsTzvXbYdNhN8ZPAaY9jhXUhT8anDuQ4qOteESUL5bBJ5l0kSTRLn4N8uWA/exec'; 
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzUsT2ZKRYhUKT1mnBZurec609LQMw5zT25cwqDLPPa8tr_EJQKqJ9ODJ1ZYiqJrbs/exec'; 
 
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                location: document.getElementById('location').value,
                 date: document.getElementById('date').value,
-                message: document.getElementById('message').value,
+                time: document.getElementById('time').value,
             };
 
             fetch(scriptURL, { 
@@ -425,17 +629,14 @@
                 headers: { 'Content-Type': 'application/json' }
             })
             .then(response => {
-                if (response.ok) {
-                    return response.json(); // Process the JSON response from the script
-                } else {
-                    throw new Error('Network response was not ok.');
-                }
+                if (response.ok) { return response.json(); } 
+                else { throw new Error('Network response was not ok.'); }
             })
             .then(data => {
                 console.log('Success:', data);
                 submitButton.textContent = 'Message Sent!';
                 alert('Thank you for your message! We will get back to you shortly.');
-                contactForm.reset(); // Clear the form
+                contactForm.reset(); 
             })
             .catch(error => {
                 console.error('Error!', error.message);
@@ -443,7 +644,6 @@
                 submitButton.textContent = 'Submission Failed';
             })
             .finally(() => {
-                // Restore button after a delay
                 setTimeout(() => {
                     submitButton.disabled = false;
                     submitButton.textContent = originalButtonText;
