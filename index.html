@@ -41,7 +41,7 @@
         .form-input {
             @apply w-full p-3 bg-white border border-brand-accent/50 rounded-lg text-brand-text focus:ring-2 focus:ring-brand-accent-dark focus:outline-none;
         }
-        /* ===== NEW CSS FOR HERO BACKGROUND ===== */
+        /* ===== HERO BACKGROUND ===== */
         .hero-background {
             background-size: cover;
             background-position: center;
@@ -58,6 +58,16 @@
         .hero-background.no-image::after {
             background-color: transparent; /* No overlay if no image */
         }
+
+        /* Success modal styling */
+        #success-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:60; align-items:center; justify-content:center; }
+        #success-modal .modal-card { background:white; padding:24px; border-radius:12px; max-width:420px; width:90%; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.2); }
+        #success-modal .modal-card h3 { font-size:1.25rem; margin-bottom:8px; }
+        #success-modal .modal-card p { color:#444; margin-bottom:16px; }
+        #success-modal .actions { display:flex; gap:8px; justify-content:center; }
+        #success-modal .actions a, #success-modal .actions button { padding:8px 12px; border-radius:8px; border:0; cursor:pointer; }
+        #success-modal .actions .primary { background:#2563eb; color:white; }
+        #success-modal .actions .secondary { background:#f3f4f6; color:#111; }
     </style>
 </head>
 <body class="font-body bg-brand-bg text-brand-text overflow-x-hidden">
@@ -101,7 +111,7 @@
 
 
     <main>
-        <section id="home" class="container mx-auto px-6 py-32 md:py-48 text-center hero-background">
+        <section id="home" class="container mx-auto px-6 py-32 md:py-48 text-center hero-background" style="background-image:url('images/hero1.jpeg')">
             <span class="section-tag mb-4 text-white border-white">Choudhary Display & Events</span>
             <h1 class="font-heading text-4xl md:text-6xl text-white mb-6" data-aos="fade-up">Your Dream Event, Our Expertise.</h1>
             <div class="flex justify-center space-x-4" data-aos="fade-up" data-aos-delay="100">
@@ -134,11 +144,11 @@
         </section>
 
         <section id="about" class="container mx-auto px-6 py-16">
-            <img id="about-image" src="" alt="About Us Image" class="w-full h-64 object-cover rounded-lg shadow-lg mb-8" data-aos="fade-up">
+            <img id="about-image" src="images/aboutimg2.jpeg" alt="About Us Image" class="w-full h-64 object-cover rounded-lg shadow-lg mb-8" data-aos="fade-up">
             <div class="text-center" data-aos="fade-up">
                 <span class="section-tag mb-4">About Us</span>
                 <h2 class="font-heading text-4xl md:text-5xl text-brand-primary mb-6">Trusted Over 30+ Years of Experience</h2>
-                <p id="about-text" class="text-brand-text leading-relaxed max-w-2xl mx-auto">Loading...</p>
+                <p id="about-text" class="text-brand-text leading-relaxed max-w-2xl mx-auto">For over 30 years, Choudhary Display has been the leading event specialist in our region. We believe in creating magical, unforgettable moments. Our mission is to combine your vision with our expertise to deliver flawless events. From intimate gatherings to grand celebrations, our dedicated team handles every detail with passion and precision.</p>
             </div>
         </section>
 
@@ -146,6 +156,10 @@
              <div class="max-w-2xl mx-auto">
                 <h3 class="font-heading text-3xl text-brand-primary mb-6">Special Services</h3>
                 <div id="facilities-list" class="space-y-3">
+                    <div class="flex items-center text-brand-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-green-600 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg><span class="text-lg">In-house DJ & Sound Systems</span></div>
+                    <div class="flex items-center text-brand-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-green-600 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg><span class="text-lg">Custom Stage & Lighting Design</span></div>
+                    <div class="flex items-center text-brand-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-green-600 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg><span class="text-lg">Interactive Photobooths</span></div>
+                    <div class="flex items-center text-brand-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-3 text-green-600 flex-shrink-0"><path d="M20 6 9 17l-5-5"/></svg><span class="text-lg">Valet & Transport Services</span></div>
                     </div>
              </div>
         </section>
@@ -156,6 +170,10 @@
                 <h2 class="font-heading text-4xl md:text-5xl text-brand-primary">Our Latest Events Photos</h2>
             </div>
             <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" data-aos="fade-up">
+                <div class="rounded-lg shadow-lg overflow-hidden border border-brand-accent/30 h-64"><img src="images/img1.jpeg" class="w-full h-full object-cover" alt=""></div>
+                <div class="rounded-lg shadow-lg overflow-hidden border border-brand-accent/30 h-64"><img src="images/img2.jpeg" class="w-full h-full object-cover" alt=""></div>
+                <div class="rounded-lg shadow-lg overflow-hidden border border-brand-accent/30 h-64"><img src="images/img3.jpeg" class="w-full h-full object-cover" alt=""></div>
+                <div class="rounded-lg shadow-lg overflow-hidden border border-brand-accent/30 h-64"><img src="images/img4.jpeg" class="w-full h-full object-cover" alt=""></div>
                 </div>
             <div class="text-center mt-12">
                 <button id="show-more-btn" class="hidden bg-brand-accent-dark text-white font-bold px-6 py-3 rounded-full shadow-lg hover:-translate-y-0.5 transition-all">
@@ -170,6 +188,18 @@
                 <h2 class="font-heading text-4xl md:text-5xl text-brand-primary">What Our Customers Say!</h2>
             </div>
             <div id="testimonials-grid" class="space-y-8 md:max-w-3xl md:mx-auto" data-aos="fade-up">
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-brand-accent/30 relative">
+                    <span class="font-heading text-6xl text-brand-accent absolute top-0 right-4">"</span>
+                    <h3 class="font-bold text-xl text-brand-primary">Priya & Rohan Sharma</h3>
+                    <p class="text-sm text-brand-accent-dark mb-3">Our Wedding</p>
+                    <p class="text-brand-text italic">"They made our day absolutely magical! Every single detail was perfect, and we didn't have to worry about a thing."</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-brand-accent/30 relative">
+                    <span class="font-heading text-6xl text-brand-accent absolute top-0 right-4">"</span>
+                    <h3 class="font-bold text-xl text-brand-primary">Mr. R. Gupta, CEO</h3>
+                    <p class="text-sm text-brand-accent-dark mb-3">Annual Corporate Gala</p>
+                    <p class="text-brand-text italic">"Flawless execution for our annual gala. The team was professional, creative, and delivered beyond our expectations."</p>
+                </div>
                 </div>
         </section>
 
@@ -179,7 +209,7 @@
                     <span class="section-tag mb-4">Book Us</span>
                     <h2 class="font-heading text-4xl text-brand-primary">Where You Want Our Services</h2>
                 </div>
-                <form class="space-y-4">
+                <form id="contactForm" class="space-y-4">
                     <div>
                         <label for="name" class="block mb-1 font-medium text-brand-text">Full Name*</label>
                         <input type="text" id="name" class="form-input" required>
@@ -239,10 +269,16 @@
             </div>
             
             <div id="contact-info" class="space-y-3 max-w-md mx-auto mb-6">
-                </div>
+                <p class="flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-brand-accent-dark"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Pancham Villa Sayaji Park Ajwa Road Vadodra Gujrat</span></p>
+                <p class="flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-brand-accent-dark"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+919328544199" class="hover:text-brand-accent-dark">+91 9328544199</a></p>
+                <p class="flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-brand-accent-dark"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="mailto:vikaschoudhary05052007@gmail.com" class="hover:text-brand-accent-dark">vikaschoudhary05052007@gmail.com</a></p>
+            </div>
 
             <div id="social-links" class="flex justify-center space-x-6 my-4">
-                </div>
+                <a href="https.www.instagram.com/chaudharydisplay?igsh=ZW94bnp2cTJvaThl" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors">Instagram</a>
+                <a href="https.www.facebook.com/share/1CRCG5GXAD" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors">Facebook</a>
+                <a href="https.www.linkedin.com/company/choudharydisplay" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors">LinkedIn</a>
+            </div>
             <p class="text-gray-500 mt-4">© 2025 Choudhary Display. All Rights Reserved.</p>
         </div>
     </footer>
@@ -269,12 +305,7 @@
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="module">
-        // ** Firebase Has Been Removed **
-        
-        // ========================================================================
-        // ================== YOUR WEBSITE DATA (EDIT THIS) =======================
-        // ========================================================================
-        
+        // Website data (as earlier)
         const websiteData = {
           "seo": {
             "title": "Choudhary Display - Premier Event & Wedding Planner",
@@ -282,10 +313,7 @@
             "keywords": "wedding planner, event planner, party specialist, choudhary display, corporate events, wedding decoration",
             "faviconUrl": "images/favicon-32x32.png"
           },
-          
-          // ========== ADD A BACKGROUND IMAGE PATH HERE ==========
-          "heroImageUrl": "images/hero1.jpeg", // e.g., "images/my-main-banner.jpg"
-
+          "heroImageUrl": "images/hero1.jpeg",
           "businessLogoUrl": "images/logo.jpeg",
           "aboutText": "For over 30 years, Choudhary Display has been the leading event specialist in our region. We believe in creating magical, unforgettable moments. Our mission is to combine your vision with our expertise to deliver flawless events. From intimate gatherings to grand celebrations, our dedicated team handles every detail with passion and precision.",
           "aboutImageUrl": "images/aboutimg2.jpeg",
@@ -313,7 +341,6 @@
             "Vendor Coordination",
             "Guest Management"
           ],
-          // ========== ERROR 1: STRAY '.' REMOVED FROM HERE ==========
           "facilities": [
             "In-house DJ & Sound Systems",
             "Custom Stage & Lighting Design",
@@ -335,8 +362,6 @@
             "images/img12.jpeg",
             "images/img13.jpeg",
             "images/img14.jpeg"
-
-            
           ],
           "testimonials": [
             {
@@ -362,16 +387,8 @@
           }
         };
 
-        // ========================================================================
-        // ================== END OF DATA (DO NOT EDIT BELOW) =====================
-        // ========================================================================
-
-
-        // --- SCRIPT TO LOAD DATA INTO HTML ---
         (function() {
             const data = websiteData; 
-
-            // SEO
             const seoData = data.seo || {};
             document.getElementById('page-title').textContent = seoData.title || 'Choudhary Display';
             document.getElementById('meta-description').setAttribute('content', seoData.description || '');
@@ -380,7 +397,6 @@
                 document.getElementById('favicon-link').setAttribute('href', seoData.faviconUrl);
             }
 
-            // Logos
             const headerLogo = document.getElementById('header-logo');
             const footerLogo = document.getElementById('footer-logo');
             if (data.businessLogoUrl) {
@@ -393,7 +409,6 @@
                 footerLogo.classList.add('hidden');
             }
 
-            // ========== NEW HERO BACKGROUND LOGIC ==========
             const homeSection = document.getElementById('home');
             if (data.heroImageUrl) {
                 homeSection.style.backgroundImage = `url('${data.heroImageUrl}')`;
@@ -403,13 +418,11 @@
                 homeSection.classList.add('no-image'); 
             }
 
-            // About
             document.getElementById('about-text').textContent = data.aboutText || 'Loading...';
             if (data.aboutImageUrl) {
                 document.getElementById('about-image').src = data.aboutImageUrl;
             }
 
-            // Services (Corporate, Wedding)
             const servicesGrid = document.getElementById('services-grid');
             servicesGrid.innerHTML = '';
             if(data.services?.length) {
@@ -425,7 +438,6 @@
                 });
             }
             
-            // Service Categories (Themes)
             const categoriesGrid = document.getElementById('service-categories-grid');
             categoriesGrid.innerHTML = '';
             if(data.serviceCategories?.length) {
@@ -439,7 +451,6 @@
                 });
             }
             
-            // Key Services (Features)
             const keyServicesList = document.getElementById('key-services-list');
             keyServicesList.innerHTML = '';
             if(data.keyServices?.length) {
@@ -454,7 +465,6 @@
                 });
             }
             
-            // Facilities List (Special Services)
             const facilitiesList = document.getElementById('facilities-list');
             facilitiesList.innerHTML = '';
             if(data.facilities?.length) {
@@ -469,7 +479,6 @@
                 });
             }
 
-            // Gallery Logic
             const galleryGrid = document.getElementById('gallery-grid');
             const modalGalleryGrid = document.getElementById('modal-gallery-grid');
             const showMoreBtn = document.getElementById('show-more-btn');
@@ -479,15 +488,13 @@
 
              if(data.galleryImages?.length) {
                 data.galleryImages.forEach((url, i) => {
-                    const imgHtml = `<img src="${url}" alt="Gallery Image ${i + 1}" class="w-full h-64 object-cover">`; // Set fixed height
+                    const imgHtml = `<img src="${url}" alt="Gallery Image ${i + 1}" class="w-full h-64 object-cover">`;
                     
-                    // Add ALL images to the modal
                     const modalImgEl = document.createElement('div');
                     modalImgEl.className = "rounded-lg shadow-lg overflow-hidden border border-brand-accent/30";
-                    modalImgEl.innerHTML = `<img src="${url}" alt="Gallery Image ${i + 1}" class="w-full h-auto object-cover">`; // Modal has auto height
+                    modalImgEl.innerHTML = `<img src="${url}" alt="Gallery Image ${i + 1}" class="w-full h-auto object-cover">`;
                     modalGalleryGrid.appendChild(modalImgEl);
                     
-                    // Add only the FIRST 4 images to the main page grid
                     if (i < 4) {
                         const gridImgEl = document.createElement('div');
                         gridImgEl.className = "rounded-lg shadow-lg overflow-hidden border border-brand-accent/30 h-64";
@@ -506,7 +513,6 @@
                 showMoreBtn.classList.add('hidden');
              }
              
-            // Testimonials
             const testimonialsGrid = document.getElementById('testimonials-grid');
             testimonialsGrid.innerHTML = '';
             if(data.testimonials?.length) {
@@ -523,7 +529,6 @@
                 });
             }
             
-            // Footer Contact Info
             const contact = data.contactInfo || {};
             const contactContainer = document.getElementById('contact-info');
             contactContainer.innerHTML = `
@@ -532,26 +537,24 @@
                 <p class="flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2 text-brand-accent-dark"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><a href="mailto:${contact.email || ''}" class="hover:text-brand-accent-dark">${contact.email || 'Loading...'}</a></p>
             `;
             
-            // Footer Social Links
             const social = data.socialLinks || {};
             const socialContainer = document.getElementById('social-links');
             socialContainer.innerHTML = `
-                <a href="${social.instagram || '#'}" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
-                <a href="${social.facebook || '#'}" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-                <a href="${social.linkedin || '#'}" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+                <a href="${social.instagram || '#'}" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors">Instagram</a>
+                <a href="${social.facebook || '#'}" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors">Facebook</a>
+                <a href="${social.linkedin || '#'}" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors">LinkedIn</a>
             `;
         })();
         
-        // --- AOS Initialization ---
+        // AOS Initialization
         AOS.init({ duration: 800, once: true });
         
-        // --- Mobile Menu Toggle ---
+        // Mobile Menu Toggle
         const menuButton = document.getElementById('mobile-menu-button');
         const closeButton = document.getElementById('mobile-menu-close');
         const menu = document.getElementById('mobile-menu');
         const overlay = document.getElementById('mobile-menu-overlay');
         
-        // ========== ERROR 2: CORRECTED ARROW FUNCTION ==========
         const openMenu = () => {
             menu.classList.remove('hidden');
             overlay.classList.remove('hidden');
@@ -569,7 +572,7 @@
             link.addEventListener('click', closeMenu);
         });
 
-        // --- Gallery Modal Toggle ---
+        // Gallery Modal Toggle
         const showMoreBtn = document.getElementById('show-more-btn');
         const galleryModal = document.getElementById('gallery-modal');
         const modalCloseBtn = document.getElementById('modal-close-btn');
@@ -585,11 +588,11 @@
             document.body.style.overflow = ''; // Restore scrolling
         };
         
-        showMoreBtn.addEventListener('click', openGalleryModal);
-        modalCloseBtn.addEventListener('click', closeGalleryModal);
-        modalOverlay.addEventListener('click', closeGalleryModal);
+        if (showMoreBtn) showMoreBtn.addEventListener('click', openGalleryModal);
+        if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeGalleryModal);
+        if (modalOverlay) modalOverlay.addEventListener('click', closeGalleryModal);
 
-        // --- Scroll to Top Button ---
+        // Scroll to Top Button
         const scrollTopBtn = document.getElementById('scroll-top-btn');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
@@ -602,9 +605,15 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // --- Contact Form Submission ---
-        const contactForm = document.querySelector('#contact form');
+        // --- CONTACT FORM SUBMISSION (fixed: URLSearchParams, success modal, WhatsApp) ---
+        const contactForm = document.getElementById('contactForm');
         const submitButton = contactForm.querySelector('button[type="submit"]');
+
+        // Web App URL you deployed (already provided)
+        const scriptURL = "https://script.google.com/macros/s/AKfycby_kPa9iAqJKQ_rlv-qOULzOYHZrJ-HttKmCKQetAiD-Bvm_RsV9m-_ZeKsBPVVFoLdhQ/exec";
+
+        // Owner phone for opening WhatsApp (E.164 without +). Using +91 9328544199 -> 919328544199
+        const ownerPhoneE164 = "919328544199";
 
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault(); 
@@ -612,44 +621,89 @@
             submitButton.disabled = true;
             submitButton.textContent = 'Sending...';
 
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzUsT2ZKRYhUKT1mnBZurec609LQMw5zT25cwqDLPPa8tr_EJQKqJ9ODJ1ZYiqJrbs/exec'; 
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const location = document.getElementById('location').value.trim();
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
 
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                location: document.getElementById('location').value,
-                date: document.getElementById('date').value,
-                time: document.getElementById('time').value,
-            };
+            const payload = new URLSearchParams();
+            payload.append('name', name);
+            payload.append('email', email);
+            payload.append('phone', phone);
+            payload.append('location', location);
+            payload.append('date', date);
+            payload.append('time', time);
 
-            fetch(scriptURL, { 
-                method: 'POST', 
-                body: JSON.stringify(formData),
-                headers: { 'Content-Type': 'application/json' }
+            fetch(scriptURL, {
+                method: 'POST',
+                body: payload // NO headers -> avoids preflight CORS
             })
-            .then(response => {
-                if (response.ok) { return response.json(); } 
-                else { throw new Error('Network response was not ok.'); }
-            })
-            .then(data => {
-                console.log('Success:', data);
-                submitButton.textContent = 'Message Sent!';
-                alert('Thank you for your message! We will get back to you shortly.');
-                contactForm.reset(); 
-            })
-            .catch(error => {
-                console.error('Error!', error.message);
-                alert('An error occurred while sending your message. Please try again later.');
-                submitButton.textContent = 'Submission Failed';
+            .then(response => response.text())
+            .then(resText => {
+  console.log('Server response:', resText);
+
+  // Create WhatsApp owner notification URL (prefilled message)
+  const waText = encodeURIComponent(
+    "New booking from website:\n" +
+    "Name: " + name + "\n" +
+    "Phone: " + phone + "\n" +
+    "Email: " + email + "\n" +
+    "Location: " + location + "\n" +
+    "Date: " + date + " " + time
+  );
+  const waUrl = "https://wa.me/" + ownerPhoneE164 + "?text=" + waText;
+
+  // Try to show the modal if it exists, otherwise fallback gracefully
+  const modal = document.getElementById('success-modal');
+  const waOpen = document.getElementById('wa-open');
+
+  if (modal) {
+    // show modal and set whatsapp link if available
+    modal.style.display = 'flex';
+    if (waOpen) {
+      waOpen.href = waUrl;
+      waOpen.setAttribute('target','_blank');
+    } else {
+      console.warn('WA link element #wa-open not found — opening WA in new tab as fallback.');
+      window.open(waUrl, '_blank');
+    }
+  } else {
+    // Modal missing — fallback to alerts and open WA
+    console.warn('Success modal (#success-modal) not found in DOM. Using fallback UI.');
+    alert("Booking received! We'll contact you soon.");
+    window.open(waUrl, '_blank');
+  }
+
+  // Reset form (safe)
+  if (typeof contactForm !== 'undefined' && contactForm) contactForm.reset();
+})
+
+            .catch(err => {
+                console.error('Error! Failed to submit:', err);
+                alert('Submission failed. Please try again later.');
             })
             .finally(() => {
-                setTimeout(() => {
-                    submitButton.disabled = false;
-                    submitButton.textContent = originalButtonText;
-                }, 4000);
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
             });
         });
+
+        // Close modal handler
+        document.getElementById('close-modal').addEventListener('click', () => {
+          document.getElementById('success-modal').style.display = 'none';
+        });
+
+        // Close modal handler (guarded)
+const closeBtn = document.getElementById('close-modal');
+if (closeBtn) {
+  closeBtn.addEventListener('click', () => {
+    const modal = document.getElementById('success-modal');
+    if (modal) modal.style.display = 'none';
+  });
+}
+
 
     </script>
 </body>
