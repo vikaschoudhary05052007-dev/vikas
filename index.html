@@ -3,48 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title id="page-title">Choudhary Display - Party Specialist</title>
     <meta name="description" content="" id="meta-description">
     <meta name="keywords" content="" id="meta-keywords">
     <link id="favicon-link" rel="icon" href="">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
     <script>
       tailwind.config = {
         theme: {
           extend: {
-            fontFamily: {
-              'heading': ['Playfair Display', 'serif'],
-              'body': ['Poppins', 'sans-serif'],
-            },
-            colors: {
-              'brand-bg': '#FBF9F6',       
-              'brand-text': '#4D433A',      
-              'brand-primary': '#111111',    
-              'brand-accent': '#C7A97F',      
-              'brand-accent-dark': '#B58A5D', 
-            }
+            fontFamily: { 'heading': ['Playfair Display', 'serif'], 'body': ['Poppins', 'sans-serif'] },
+            colors: { 'brand-bg': '#FBF9F6', 'brand-text': '#4D433A', 'brand-primary': '#111111', 'brand-accent': '#C7A97F', 'brand-accent-dark': '#B58A5D' }
           }
         }
       }
     </script>
     <style>
-        .section-tag { @apply inline-block text-brand-accent-dark border border-brand-accent-dark rounded-full px-6 py-2 text-sm font-medium; }
-        .form-input { @apply w-full p-3 bg-white border border-brand-accent/50 rounded-lg text-brand-text focus:ring-2 focus:ring-brand-accent-dark focus:outline-none; }
+        .section-tag { @apply inline-block text-brand-accent-dark text-sm font-medium tracking-widest uppercase mb-4; }
+        .form-input { width: 100%; padding: 0.75rem; background-color: white; border: 1px solid rgba(199, 169, 127, 0.5); border-radius: 0.5rem; color: #4D433A; }
+        .form-input:focus { outline: 2px solid #B58A5D; }
         .hero-background { background-size: cover; background-position: center; position: relative; isolation: isolate; }
         .hero-background::after { content: ''; position: absolute; inset: 0; background-color: rgba(25, 25, 25, 0.4); z-index: -1; }
         .hero-background.no-image::after { background-color: transparent; }
-        
-        /* Modal Styles */
         #success-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:60; align-items:center; justify-content:center; }
         #success-modal .modal-card { background:white; padding:24px; border-radius:12px; max-width:420px; width:90%; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.2); }
         #success-modal .actions { display:flex; gap:8px; justify-content:center; margin-top: 16px; }
@@ -62,7 +48,6 @@
                     <img id="header-logo" src="" alt="Business Logo" class="h-10 w-10 rounded-full hidden object-cover">
                     <span class="font-heading text-2xl font-bold text-brand-primary">Choudhary Display</span>
                 </a>
-                
                 <nav class="hidden md:flex space-x-6 items-center">
                     <a href="#home" class="font-medium text-brand-text hover:text-brand-accent-dark">Home</a>
                     <a href="#services" class="font-medium text-brand-text hover:text-brand-accent-dark">Services</a>
@@ -71,7 +56,6 @@
                     <a href="#testimonials" class="font-medium text-brand-text hover:text-brand-accent-dark">Testimonials</a>
                     <a href="#contact" class="bg-brand-accent-dark text-white font-bold px-5 py-2 rounded-full shadow-lg hover:-translate-y-0.5 transition-all">Contact Us</a>
                 </nav>
-
                 <button id="mobile-menu-button" class="md:hidden text-brand-primary border border-brand-primary p-1 rounded-md">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                 </button>
@@ -94,7 +78,7 @@
 
     <main>
         <section id="home" class="container mx-auto px-6 py-32 md:py-48 text-center hero-background">
-            <span class="section-tag mb-4 text-white border-white">Choudhary Display & Events</span>
+            <span class="inline-block text-white text-sm font-medium tracking-widest uppercase mb-4">Choudhary Display & Events</span>
             <h1 class="font-heading text-4xl md:text-6xl text-white mb-6" data-aos="fade-up">Your Dream Event, Our Expertise.</h1>
             <div class="flex justify-center space-x-4" data-aos="fade-up" data-aos-delay="100">
                 <a href="#contact" class="bg-brand-accent-dark text-white font-bold px-6 py-3 rounded-full shadow-lg hover:-translate-y-0.5 transition-all">Contact Us</a>
@@ -104,15 +88,15 @@
 
         <section id="services" class="container mx-auto px-6 py-16">
             <div class="text-center mb-12">
-                <span class="section-tag mb-4">Our Services</span>
-                <h2 class="font-heading text-4xl md:text-5xl text-brand-primary">Our Grateful Events & Services</h2>
+                <span id="services-section-title" class="inline-block text-brand-accent-dark text-sm font-medium tracking-widest uppercase mb-4">Our Services</span>
+                <h2 id="services-subtitle" class="font-heading text-4xl md:text-5xl text-brand-primary">Our Grateful Events & Services</h2>
             </div>
             <div id="services-grid" class="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-8"></div>
         </section>
         
         <section id="service-categories" class="container mx-auto px-6 py-16">
              <div class="text-center mb-12">
-                <span class="section-tag mb-4">Themes</span>
+                <span class="inline-block text-brand-accent-dark text-sm font-medium tracking-widest uppercase mb-4">Themes</span>
                 <h2 class="font-heading text-4xl md:text-5xl text-brand-primary">Our Popular Themes</h2>
             </div>
             <div id="service-categories-grid" class="flex flex-wrap justify-center gap-4"></div>
@@ -125,8 +109,8 @@
         <section id="about" class="container mx-auto px-6 py-16">
             <img id="about-image" src="" alt="About Us" class="w-full h-64 object-cover rounded-lg shadow-lg mb-8" data-aos="fade-up">
             <div class="text-center" data-aos="fade-up">
-                <span class="section-tag mb-4">About Us</span>
-                <h2 class="font-heading text-4xl md:text-5xl text-brand-primary mb-6">Trusted Over 30+ Years of Experience</h2>
+                <span class="inline-block text-brand-accent-dark text-sm font-medium tracking-widest uppercase mb-4">About Us</span>
+                <h2 id="about-title" class="font-heading text-4xl md:text-5xl text-brand-primary mb-6">Trusted Over 30+ Years of Experience</h2>
                 <p id="about-text" class="text-brand-text leading-relaxed max-w-2xl mx-auto">Loading...</p>
             </div>
         </section>
@@ -140,7 +124,7 @@
 
         <section id="gallery" class="container mx-auto px-6 py-16">
              <div class="text-center mb-12">
-                <span class="section-tag mb-4">Gallery</span>
+                <span class="inline-block text-brand-accent-dark text-sm font-medium tracking-widest uppercase mb-4">Gallery</span>
                 <h2 class="font-heading text-4xl md:text-5xl text-brand-primary">Our Latest Events Photos</h2>
             </div>
             <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" data-aos="fade-up"></div>
@@ -151,16 +135,16 @@
 
         <section id="testimonials" class="container mx-auto px-6 py-16">
              <div class="text-center mb-12">
-                <span class="section-tag mb-4">Testimonial</span>
+                <span class="inline-block text-brand-accent-dark text-sm font-medium tracking-widest uppercase mb-4">Testimonial</span>
                 <h2 class="font-heading text-4xl md:text-5xl text-brand-primary">What Our Customers Say!</h2>
             </div>
             <div id="testimonials-grid" class="space-y-8 md:max-w-3xl md:mx-auto" data-aos="fade-up"></div>
         </section>
 
         <section id="contact" class="container mx-auto px-6 py-16">
-            <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg border border-brand-accent/30" data-aos="fade-up">
+            <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg border border-brand-accent/30">
                 <div class="text-center mb-8">
-                    <span class="section-tag mb-4">Book Us</span>
+                    <span class="inline-block text-brand-accent-dark text-sm font-medium tracking-widest uppercase mb-4">Book Us</span>
                     <h2 class="font-heading text-4xl text-brand-primary">Where You Want Our Services</h2>
                 </div>
                 <form id="contactForm" class="space-y-4">
@@ -179,7 +163,7 @@
 
         <section id="map" class="container mx-auto px-6 py-16">
             <div class="text-center mb-12">
-                <span class="section-tag mb-4">Find Us</span>
+                <span class="inline-block text-brand-accent-dark text-sm font-medium tracking-widest uppercase mb-4">Find Us</span>
                 <h2 class="font-heading text-4xl md:text-5xl text-brand-primary">Our Location</h2>
             </div>
             <div class="overflow-hidden rounded-lg shadow-lg border border-brand-accent/30" data-aos="fade-up">
@@ -244,21 +228,16 @@
             measurementId: "G-VBW112930K"
         };
 
-        // Initialize Firebase
         if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
         const db = firebase.database();
 
-        // Initialize Animation
         if(typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
 
         // ==========================================
         //  STEP 2: RENDER LOGIC
         // ==========================================
         function renderWebsite(data) {
-            if(!data) {
-                console.log("Database empty. Use Admin Panel > Restore Data.");
-                return;
-            }
+            if(!data) return;
 
             // SEO & HEADERS
             const seo = data.seo || {};
@@ -289,11 +268,16 @@
                 }
             }
 
-            // ABOUT
+            // TITLES (About & Services)
+            if(document.getElementById('about-title')) document.getElementById('about-title').textContent = data.aboutTitle || 'Trusted Over 30+ Years of Experience';
+            if(document.getElementById('services-section-title')) document.getElementById('services-section-title').textContent = data.servicesTitle || 'Our Services';
+            if(document.getElementById('services-subtitle')) document.getElementById('services-subtitle').textContent = data.servicesSubtitle || 'Our Grateful Events & Services';
+
+            // ABOUT CONTENT
             if(document.getElementById('about-text')) document.getElementById('about-text').textContent = data.aboutText || '';
             if(document.getElementById('about-image') && data.aboutImageUrl) document.getElementById('about-image').src = data.aboutImageUrl;
 
-            // SERVICES
+            // SERVICES (Dynamic List)
             const svcGrid = document.getElementById('services-grid');
             if(svcGrid && data.services) {
                 svcGrid.innerHTML = '';
@@ -305,7 +289,7 @@
                 });
             }
 
-            // LISTS (Categories, Facilities, Key Services)
+            // LISTS
             renderSimpleList('service-categories-grid', data.serviceCategories, (item, i) => 
                 `<a href="#" class="${i===0?'bg-brand-accent-dark text-white':'bg-white text-brand-accent-dark'} font-bold px-6 py-3 rounded-full border border-brand-accent-dark">${item}</a>`
             );
@@ -324,9 +308,7 @@
             if(galGrid && modGrid && data.galleryImages) {
                 galGrid.innerHTML = ''; modGrid.innerHTML = '';
                 data.galleryImages.forEach((url, i) => {
-                    // Modal Item
                     modGrid.innerHTML += `<div class="rounded-lg shadow-lg overflow-hidden border border-brand-accent/30"><img src="${url}" class="w-full h-auto object-cover"></div>`;
-                    // Grid Item (Max 4)
                     if(i < 4) {
                         galGrid.innerHTML += `<div class="rounded-lg shadow-lg overflow-hidden border border-brand-accent/30 h-64"><img src="${url}" class="w-full h-full object-cover"></div>`;
                     }
@@ -367,9 +349,9 @@
             const slDiv = document.getElementById('social-links');
             if(slDiv) {
                 slDiv.innerHTML = `
-                <a href="${sl.instagram||'#'}" target="_blank" class="hover:text-brand-accent-dark">Instagram</a>
-                <a href="${sl.facebook||'#'}" target="_blank" class="hover:text-brand-accent-dark">Facebook</a>
-                <a href="${sl.linkedin||'#'}" target="_blank" class="hover:text-brand-accent-dark">LinkedIn</a>`;
+                <a href="${sl.instagram||'#'}" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors mr-4">Instagram</a>
+                <a href="${sl.facebook||'#'}" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors mr-4">Facebook</a>
+                <a href="${sl.linkedin||'#'}" target="_blank" class="text-brand-text hover:text-brand-accent-dark transition-colors">LinkedIn</a>`;
             }
         }
 
