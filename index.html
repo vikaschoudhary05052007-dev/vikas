@@ -214,6 +214,34 @@
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+
+
+
+//======================================================================
+// 1. Disable Right Click
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+    // 2. Disable Keyboard Shortcuts (F12, Ctrl+Shift+I, Ctrl+U)
+    document.onkeydown = function(e) {
+        if (
+            e.key === "F12" || 
+            (e.ctrlKey && e.shiftKey && e.key === "I") || 
+            (e.ctrlKey && e.shiftKey && e.key === "J") || 
+            (e.ctrlKey && e.key === "U")
+        ) {
+            e.preventDefault();
+            return false;
+        }
+    };
+
+//========================================================================
+
+
+
+
+
+
+        
         // ==========================================
         //  STEP 1: FIREBASE CONFIGURATION
         // ==========================================
